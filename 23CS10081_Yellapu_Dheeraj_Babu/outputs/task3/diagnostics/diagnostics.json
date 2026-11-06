@@ -1,0 +1,174 @@
+{
+ "lexical": [
+  {
+   "system": "T1 PPMI-SVD",
+   "n_hub_vocab": 3916,
+   "N10_skewness": 2.09504586666072,
+   "N10_max": 76,
+   "frac_function_words_top50_hubs": 0.1,
+   "top10_hubs": [
+    "tell",
+    "ask",
+    "'d",
+    "happy",
+    "treat",
+    "chance",
+    "happen",
+    "cage",
+    "knew",
+    "wo"
+   ],
+   "n_nn_vocab": 2134,
+   "nn_same_upos": 0.32633552014995315,
+   "nn_cooccur": 0.5571227741330834,
+   "random_same_upos": 0.22267690537532203,
+   "random_cooccur": 0.06651992295955376
+  },
+  {
+   "system": "T3 L8",
+   "n_hub_vocab": 3919,
+   "N10_skewness": 1.4467964300864358,
+   "N10_max": 63,
+   "frac_function_words_top50_hubs": 0.12,
+   "top10_hubs": [
+    "the",
+    "take",
+    "is",
+    "in",
+    "activities",
+    "move",
+    "restaurant",
+    "people",
+    "eol",
+    "pull"
+   ],
+   "n_nn_vocab": 2134,
+   "nn_same_upos": 0.7401593252108716,
+   "nn_cooccur": 0.16246485473289596,
+   "random_same_upos": 0.221975987993997,
+   "random_cooccur": 0.06562781390695348
+  },
+  {
+   "system": "T3 L8 + ABTT",
+   "n_hub_vocab": 3919,
+   "N10_skewness": 0.5736956503906443,
+   "N10_max": 31,
+   "frac_function_words_top50_hubs": 0.02,
+   "top10_hubs": [
+    "payment",
+    "people",
+    "fee",
+    "is",
+    "animals",
+    "steve",
+    "ecs",
+    "peter",
+    "weekend",
+    "animal"
+   ],
+   "n_nn_vocab": 2134,
+   "nn_same_upos": 0.709746954076851,
+   "nn_cooccur": 0.15590440487347704,
+   "random_same_upos": 0.22223500690372802,
+   "random_cooccur": 0.06565545394513037
+  },
+  {
+   "system": "T3 L0",
+   "n_hub_vocab": 3919,
+   "N10_skewness": 1.0276766522543794,
+   "N10_max": 48,
+   "frac_function_words_top50_hubs": 0.04,
+   "top10_hubs": [
+    ".....",
+    "ekrapels@esaibos.com",
+    "i.e.",
+    "...",
+    "..",
+    "\u2018\u2019",
+    "john",
+    ".",
+    "restaurants",
+    "n't"
+   ],
+   "n_nn_vocab": 2134,
+   "nn_same_upos": 0.7071696344892221,
+   "nn_cooccur": 0.14611059044048735,
+   "random_same_upos": 0.22288816069239814,
+   "random_cooccur": 0.06607299197038297
+  }
+ ],
+ "trees": [
+  {
+   "system": "gold",
+   "mean_fn_token_degree": 1.0487601003064921,
+   "share_edges_touching_fn": 0.5313272277947376,
+   "mean_max_degree": 4.528787878787878,
+   "p_same_upos_edges": 0.13286814944032563,
+   "p_same_upos_nonedges": 0.09207448722562073,
+   "edge_auc": NaN
+  },
+  {
+   "system": "linear chain",
+   "mean_fn_token_degree": 1.8640289774310392,
+   "share_edges_touching_fn": 0.7793283907544701,
+   "mean_max_degree": 2.0,
+   "p_same_upos_edges": 0.06672481465329264,
+   "p_same_upos_nonedges": NaN,
+   "edge_auc": 0.7516303029567216
+  },
+  {
+   "system": "T1 PPMI-SVD",
+   "mean_fn_token_degree": 1.8434104207300084,
+   "share_edges_touching_fn": 0.6092455298735281,
+   "mean_max_degree": 3.753030303030303,
+   "p_same_upos_edges": 0.2118040412850705,
+   "p_same_upos_nonedges": NaN,
+   "edge_auc": 0.5432750320616593
+  },
+  {
+   "system": "T3 L8",
+   "mean_fn_token_degree": 2.292003343549735,
+   "share_edges_touching_fn": 0.7913940979793574,
+   "mean_max_degree": 5.460606060606061,
+   "p_same_upos_edges": 0.25032708242477103,
+   "p_same_upos_nonedges": NaN,
+   "edge_auc": 0.4588381776759326
+  },
+  {
+   "system": "T3 L8 + ABTT",
+   "mean_fn_token_degree": 2.0367790470883254,
+   "share_edges_touching_fn": 0.6639046373019334,
+   "mean_max_degree": 3.6151515151515152,
+   "p_same_upos_edges": 0.2919028928623346,
+   "p_same_upos_nonedges": NaN,
+   "edge_auc": 0.4431467695090725
+  },
+  {
+   "system": "contextual L8 cosine",
+   "mean_fn_token_degree": 2.0860964056840348,
+   "share_edges_touching_fn": 0.770170082860881,
+   "mean_max_degree": 3.353030303030303,
+   "p_same_upos_edges": 0.1834568978049135,
+   "p_same_upos_nonedges": NaN,
+   "edge_auc": 0.7012689089375048
+  },
+  {
+   "system": "T2 probe L8",
+   "mean_fn_token_degree": 1.1649484536082475,
+   "share_edges_touching_fn": 0.5557493821776421,
+   "mean_max_degree": 4.136363636363637,
+   "p_same_upos_edges": 0.14667829626399187,
+   "p_same_upos_nonedges": NaN,
+   "edge_auc": 0.9584482531459176
+  }
+ ],
+ "function_upos": [
+  "ADP",
+  "AUX",
+  "CCONJ",
+  "DET",
+  "PART",
+  "PRON",
+  "SCONJ"
+ ]
+}

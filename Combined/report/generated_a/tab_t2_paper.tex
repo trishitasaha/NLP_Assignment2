@@ -1,0 +1,16 @@
+\begin{tabular}{llcccc}
+\toprule
+ & system & UUAS & DSpr & Root\% & NSpr \\
+\midrule
+Paper (PTB WSJ) & LINEAR & 48.9 & 0.58 & 2.9 & 0.27 \\
+Paper (PTB WSJ) & PROJ0 & 59.8 & 0.73 & 64.4 & 0.75 \\
+Paper (PTB WSJ) & ELMO1 & 77.0 & 0.83 & 86.5 & 0.87 \\
+Paper (PTB WSJ) & BERTBASE7 & 79.8 & 0.85 & 88.0 & 0.87 \\
+Paper (PTB WSJ) & BERTLARGE16 & 81.7 & 0.87 & 90.1 & 0.89 \\
+\midrule
+Ours (EWT) & LINEAR (word order only) & 43.1 & 0.549 & 29.4 & 0.333 \\
+Ours (EWT) & BERT layer 0 (embeddings + position) & 58.7 & 0.669 & 63.0 & 0.636 \\
+Ours (EWT) & \textbf{BERT-base-uncased layer 8} (paper schedule) & 79.5 & 0.822 & 87.5 & 0.859 \\
+Ours (EWT) & BERT layer 8, spec-literal (constant lr, last epoch) & 62.0 & 0.760 & 58.6 & 0.803 \\
+\bottomrule
+\end{tabular}

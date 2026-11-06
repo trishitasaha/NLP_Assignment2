@@ -1,0 +1,21 @@
+{
+  "l_star": 8,
+  "distance_rank": 128,
+  "depth_rank": 128,
+  "selection": "dev UUAS (best rank per layer, layers 1-12), tie-break dev NSpr",
+  "dev": {
+    "uuas": 0.6238175843871353,
+    "dspr": 0.7680498506739382,
+    "nspr": 0.7985429206014689,
+    "root": 0.5947026486756621
+  },
+  "test": {
+    "uuas": 0.6199879711307137,
+    "dspr": 0.7598730722746702,
+    "nspr": 0.8032220347548522,
+    "root": 0.5864227250842562
+  },
+  "test_argmax_uuas_layer": 8,
+  "test_argmax_nspr_layer": 8,
+  "dev_argmax_nspr_layer": 8
+}

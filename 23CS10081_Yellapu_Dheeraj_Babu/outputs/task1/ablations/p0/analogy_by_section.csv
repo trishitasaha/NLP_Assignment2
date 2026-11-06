@@ -1,0 +1,15 @@
+section,n,covered,correct,acc_covered,acc_full
+capital-common-countries,506,156,0,0.0,0.0
+capital-world,4524,155,0,0.0,0.0
+currency,866,28,0,0.0,0.0
+city-in-state,2467,227,0,0.0,0.0
+family,506,210,7,0.03333333333333333,0.01383399209486166
+gram1-adjective-to-adverb,992,702,0,0.0,0.0
+gram2-opposite,812,156,0,0.0,0.0
+gram3-comparative,1332,930,0,0.0,0.0
+gram4-superlative,1122,380,0,0.0,0.0
+gram5-present-participle,1056,506,0,0.0,0.0
+gram6-nationality-adjective,1599,409,3,0.007334963325183374,0.001876172607879925
+gram7-past-tense,1560,1056,0,0.0,0.0
+gram8-plural,1332,506,2,0.003952569169960474,0.0015015015015015015
+gram9-plural-verbs,870,306,0,0.0,0.0

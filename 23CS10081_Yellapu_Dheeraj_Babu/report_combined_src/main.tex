@@ -1,0 +1,320 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,margin=2.1cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[table]{xcolor}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage[section]{placeins}
+\usepackage[round]{natbib}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{1.1ex plus .4ex}{.6ex}
+\titlespacing*{\subsection}{0pt}{.9ex plus .3ex}{.4ex}
+\setlist{itemsep=1pt,topsep=2pt,parsep=0pt}
+\captionsetup{font=small,labelfont=bf,skip=3pt}
+\setlength{\textfloatsep}{8pt plus 2pt}
+\setlength{\floatsep}{6pt plus 2pt}
+\setlength{\intextsep}{6pt plus 2pt}
+\graphicspath{{generated/}{../outputs/task2/figures/}{../outputs/task3/figures/}}
+\input{../report/generated/numbers.tex}
+\input{generated/numbers_b.tex}
+\newcommand{\lstar}{\ensuremath{\ell^*}}
+\newcommand{\pt}{\,pt}
+% ---- fill in the teammate's details here ----
+\newcommand{\TeammateName}{Trishita Saha}
+\newcommand{\TeammateRoll}{26CS91R13}
+
+\title{\vspace{-1.2cm}\textbf{From Static to Contextual: Distributional Semantics and What's Inside BERT}\\[2pt]
+\large Combined report: two independent implementations compared\\[1pt]
+\normalsize NLP CS60075 Assignment II -- Project 5, dataset: UD English EWT}
+\author{Yellapu Dheeraj Babu (23CS10081) \qquad \TeammateName{} (\TeammateRoll)}
+\date{November 2026}
+
+\begin{document}
+\maketitle
+\vspace{-0.6cm}
+\begin{abstract}
+\noindent The two of us implemented the project independently and compare the two implementations here: \textbf{A}
+(Y.\,D.\,Babu) and \textbf{B} (\TeammateName). The project builds PPMI+SVD vectors from UD English EWT (Task~1), reproduces the
+\citet{hewitt} structural probe on \texttt{bert-base-uncased} (Task~2), and pools the most syntactic layer into static vectors
+(Task~3). \textbf{Both implementations find the same best layer (\lstar=8) and the same qualitative picture.} BERT-static vectors are far
+better than PPMI-SVD on WordSim-353 and analogies, but no better (in fact worse) on the tree-recovery check, so the semantic and
+syntactic evaluations disagree. Under identical settings the two Task~3 pipelines give \emph{the same numbers to three decimals}.
+The one large quantitative difference is the probe's UUAS (A \TtwoTestUuas\%, B \BUUASnp\%, paper 79.8\%). We trace it to the training
+schedule: B uses a constant learning rate, A uses the paper's decay. A control run in A with B's schedule shows the same drop (\ALitUUASonetwoeight\% when the last epoch is kept), and
+the schedule also changes which probe rank looks best.
+\end{abstract}
+
+% =====================================================================================================
+\section{Introduction}
+Count-based distributional models give one fixed vector per word \citep{levy2014}; BERT \citep{devlin} gives every token a
+context-dependent vector. The project asks three questions on UD English EWT \citep{silveira,ud}: \textbf{(T1)} how good are PPMI+SVD
+vectors from 200k words? \textbf{(T2)} which BERT layer encodes dependency trees best, according to a structural probe? \textbf{(T3)} if that
+layer is averaged into static vectors, are they better than T1 on meaning and on tree structure, and do the two answers agree?
+Because we implemented the pipeline twice, we can also ask a fourth question: \textbf{which conclusions survive a change of implementation?}
+
+\noindent\textbf{Summary of the comparison.}
+\emph{Robust} (both implementations agree): \lstar=8 with a mid-layer peak; T3 $\gg$ T1 on WordSim-353 and analogies; T3 $<$ T1 on the
+MST check, close to a random tree; the best layers for static semantics are 1--2, not \lstar; mean-centring/all-but-the-top helps T3.
+\emph{Implementation-sensitive}: the absolute probe UUAS and the best probe rank (training schedule), T1's WordSim $\rho$ (vocabulary
+cut-off and pair subset), and absolute MST levels (sentence sample and punctuation handling).
+
+% =====================================================================================================
+\section{Data and the two implementations}\label{sec:impl}
+Both implementations use the same EWT splits (12,544 / 2,001 / 2,077 sentences, 204,578 train tokens, 16,654 lowercased types), the
+same benchmarks (WordSim-353, \citealt{ws353}; Google analogies, \citealt{mikolov}; gensim copies), the same checkpoint
+(\texttt{bert-base-uncased}, frozen), mean pooling of word pieces, the paper's probes and L1 losses, and selection of \lstar{} on dev.
+Table~\ref{tab:impl} lists every choice in which they differ.
+
+\begin{table}[h]\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{0.20\textwidth}p{0.37\textwidth}p{0.37\textwidth}}
+\toprule
+ & \textbf{A} (Y.\,D.\,Babu) & \textbf{B} (\TeammateName) \\
+\midrule
+EWT loading & HF \texttt{universal\_dependencies}, pinned tag \texttt{ud2.18-loader-v2.3.0} & official \texttt{.conllu} files, GitHub \texttt{master} branch (HF loader failed for B) \\
+T1 vocabulary & all 16,654 types (min.\ count 1) & 8,865 types with count $\ge$2; rarer words dropped \\
+SVD & sklearn \texttt{TruncatedSVD}, randomized, seed 42 & scipy \texttt{svds}, fixed start vector \\
+WS-353 ``all 353'' & OOV pair $\to$ median model similarity & OOV pair $\to$ similarity 0 \\
+Analogy coverage & 5,727 covered questions & 3,406 covered questions \\
+20-sentence sample & seed 42; 5--40 non-punct.\ words, \emph{all in vocabulary}; punctuation excluded (234 edges) & seed 42; $\ge$5 tokens, any words; \emph{punctuation included}; OOV words at distance 1 (282 edges) \\
+Random-tree baseline & uniformly random spanning tree (expected UUAS) & MST of random distances (100 draws) \\
+Robustness set & all 660 eligible test sentences & all 1,926 multi-token test sentences \\
+Probed layers & 0 (embeddings) + 1--12; 78 probes & 1--12; 72 probes \\
+\textbf{Probe schedule} & Adam 1e-3, 30 ep., \textbf{lr $\times$0.1 when dev loss stalls} (paper), best-dev checkpoint & Adam 1e-3, 30 ep., \textbf{constant lr}, best-dev checkpoint \\
+UUAS punctuation & excluded (paper convention) & reported with and without \\
+Depth Spearman & per-length average, macro over lengths 5--50 (paper) & per-sentence mean over lengths 5--50 \\
+T3 vocabulary & all 16,654 types & main: T1's 8,865 types; variant: all types \\
+Anisotropy fix & all-but-the-top, $D=7$ \citep{mu}; also on T1 & mean-centring; centring + PCA to 100 dims \\
+Uncertainty & bootstrap CIs, paired bootstrap / McNemar tests & micro and macro averages; full test split \\
+Seeds & 42 everywhere; probe $42+1000\ell+k$ (+500 depth) & sample 42; SVD start 0; probe $1000k$ (+7 depth) + layer \\
+\bottomrule
+\end{tabular}
+\caption{Where implementations A and B differ (everything else is shared). B's entries were checked against B's source code (\texttt{Codes/*.py}).}\label{tab:impl}\end{table}
+
+\noindent\textbf{Cross-check.} B's raw outputs are not available to us, so we re-scored A's outputs under B's settings
+(Table~\ref{tab:cross}). Every Task~3 number that B reports and that can be reproduced this way is reproduced exactly, so the two
+pooling and evaluation pipelines are equivalent. The T1 numbers differ only because B's vectors were trained on the count-$\ge$2 vocabulary.
+\begin{table}[h]\centering\footnotesize\input{generated/tab_crosscheck.tex}
+\caption{A's outputs re-scored in B's setting vs.\ B's reported numbers. $^a$A's vectors (min.\ count 1); $^b$B's vectors (count $\ge$2), so the
+T1 rows compare two different vector sets on the same pairs.}\label{tab:cross}\end{table}
+
+% =====================================================================================================
+\section{Task 1 -- PPMI + SVD}\label{sec:t1}
+Both build a symmetric $\pm$5-word co-occurrence matrix over the training sentences, apply PPMI \citep{levy2014}, and keep the top 100
+SVD dimensions with vectors $U\Sigma$; similarity is cosine and analogies use the vector offset with the query words excluded.
+\begin{table}[h]\centering\footnotesize\input{generated/tab_t1_cmp.tex}
+\caption{Task 1 in both implementations (numbers in brackets: covered items / sentences or edges).}\label{tab:t1}\end{table}
+
+\noindent\textbf{Agreement.} Both find weak vectors limited by data: WS-353 $\rho$ near 0 over all 353 pairs, analogies below 1\%,
+and an MST above a random tree but well below the linear chain.
+\textbf{Differences explained.} B's higher covered $\rho$ (\BWSCov{} vs.\ \TOneWSCov) has two causes. (i)~\emph{Different pairs}: B's
+203 covered pairs exclude words seen once; A's vectors on those same 203 pairs score \XTOneSub, so most of the gap is the pair subset.
+This matches A's frequency analysis ($\rho$ rises to \TOneWSFreqTwenty{} on pairs of words seen $\ge$20 times). (ii)~\emph{Different
+vectors}: dropping singletons removes noisy rows and contexts before the SVD, which accounts for the remaining \XTOneSub{}$\to$\BWSCov.
+The ``all 353'' numbers differ by the imputation rule: with B's ``missing $=0$'' rule A gets \XTOneAllZero{} (B \BWSAllZero), and with the
+median rule A gets \TOneWSFull. MST levels differ because B's sample keeps OOV words at distance 1 and contains punctuation, which makes every
+system and both baselines lower (B: random \BRandTwenty, chain \BChainTwenty; A: \RandomMST, \ChainMST); the \emph{ordering}
+random $<$ T1 $<$ chain is the same in both. A also ran the \citet{levy2015} hyper-parameters (Table~\ref{tab:t1abl}): no setting rescues the analogies, and the best variant
+($p=0$) only reaches $\rho=0.134$ -- the limit is the 200k-word corpus, not the hyper-parameters.
+\begin{table}[h]\centering\footnotesize\setlength{\tabcolsep}{4pt}\input{../report/generated/tab_t1.tex}
+\caption{A's Task 1 with the Levy et al.\ variants ($\alpha$ = context-distribution smoothing, $p$ = eigenvalue weight) and baselines.}\label{tab:t1abl}\end{table}
+
+\noindent A's per-relation analysis adds that PPMI-SVD recovers content-word relations that co-occur
+(amod \TOneRelAmod, conj \TOneRelConj) and almost no function-word attachments (case \TOneRelCase, det \TOneRelDet).
+
+% =====================================================================================================
+\section{Task 2 -- Structural probe}\label{sec:t2}
+Both extract all layers of frozen \texttt{bert-base-uncased} once (word = mean of its word pieces, fp16 cache), train distance probes
+$\lVert B(h_i-h_j)\rVert^2$ and depth probes $\lVert Bh_i\rVert^2$ with $B\in\mathbb{R}^{k\times768}$, $k\in\{32,64,128\}$, $B\sim\mathcal{U}(-0.05,0.05)$,
+L1 loss normalised by $n^2$ / $n$, Adam lr $10^{-3}$, batches of 20 sentences, 30 epochs, keep the best-dev checkpoint, decode with an MST
+and pick \lstar{} on dev UUAS. The decisive difference is the learning-rate schedule (Table~\ref{tab:impl}).
+
+\begin{figure}[t]\centering\includegraphics[width=\textwidth]{fig_layers_cmp.pdf}
+\caption{Probe quality vs.\ layer in both implementations (EWT test). A's curves come from its outputs; B's from its Table~2. A's
+constant-lr control (orange) uses B's schedule but keeps the last epoch; B (green) keeps the best dev epoch.}\label{fig:cmp}\end{figure}
+\begin{table}[t]\centering\footnotesize\setlength{\tabcolsep}{3.8pt}\input{generated/tab_t2_cmp.tex}
+\caption{Per-layer test results. $^\ast$B reports $k=128$ only with punctuation included. Shaded: \lstar=8.}\label{tab:t2}\end{table}
+\begin{table}[t]\centering\footnotesize\input{generated/tab_t2_best.tex}
+\caption{Best probes vs.\ \citet{hewitt} Table~1. UUAS excludes punctuation in all rows (B with punctuation: \BUUAS). $^\dagger$B's
+distance Spearman; $^\ddagger$B averages per sentence, A per length (the paper's definition).}\label{tab:best}\end{table}
+
+\noindent\textbf{Agreement.} Both pick \lstar=8, both see UUAS and depth Spearman rise to the middle layers and fall towards layer 12
+(Fig.~\ref{fig:cmp}), and in both the dev choice coincides with the test argmax or is statistically tied with it (A: layers \TiedLayers{} are
+tied by a paired bootstrap).
+
+\noindent\textbf{The UUAS gap is the schedule.} A reaches \TtwoTestUuas\% (paper 79.8\%), B \BUUASnp\%. Three observations point to the
+constant learning rate:
+(i)~A's control run with B's schedule (constant lr, last epoch, $k=128$) falls to \ALitUUASonetwoeight\%; B's run with the same schedule but
+best-dev selection sits in between (\BUUASnp\%, Fig.~\ref{fig:cmp}).
+(ii)~B observes that the best dev epoch of $k=128$ distance probes is mostly epoch~1; in A's control the dev minimum is also at epoch
+\LitMinEpoch, after which dev loss oscillates (0.54--0.59) for 29 epochs.
+(iii)~In A's control the \emph{training} loss also stays high (0.62 vs.\ 0.42 with decay), so the probe is not over-fitting but failing to
+converge. With an L1 loss the gradient does not shrink near the optimum, so Adam's steps stay of size $\approx$lr and circle the minimum.
+The $\times$0.1 decay lets it settle.
+\textbf{This also reverses the rank conclusion.} B finds $k=32$ best and interprets it as over-fitting of larger probes; under the decay
+schedule, A finds $k=128 \ge 64 > 32$ (at \lstar: \RankAUUAS{} / \RankBUUAS{} / \RankCUUAS\%), as the paper does. The smaller probe is less hurt by
+non-convergence, so ``low rank generalises better'' is a property of the constant-lr schedule rather than of the data. Both agree that the
+tree lives in a low-dimensional subspace: even $k=32$ is within about 2\pt{} of $k=128$ in A.
+
+\noindent\textbf{Remaining gap to the paper (A, $-$0.3\pt).} Both name the same plausible causes: 12.5k vs.\ $\approx$40k training sentences,
+web text vs.\ edited news, UD content-head trees vs.\ Stanford Dependencies, uncased vs.\ cased BERT, and rank $\le$128 / 30 epochs vs.\ full
+rank / up to 40 epochs. A's layer-0 probe (\LzeroUUAS\%) matches the paper's non-contextual PROJ0 (59.8\%), so context adds $\approx$21\pt,
+mostly for function words (A: case \PRelZeroCase$\to$\PRelCase, cc \PRelZeroCc$\to$\PRelCc).
+Fig.~\ref{fig:rel} shows where the probe succeeds: short head--dependent arcs (obj \PRelObj, det \PRelDet, aux \PRelAux) are easy,
+coordination (conj \PRelConj) and PP attachment (obl \PRelObl) are hard -- UD attaches every conjunct to the first one, which creates long arcs.
+\begin{figure}[t]\centering\includegraphics[width=0.78\textwidth]{relation_recall_heatmap.pdf}
+\caption{A: probe recall of gold edges per dependency relation and layer (EWT test).}\label{fig:rel}\end{figure}
+
+\noindent\textbf{Punctuation} (B): including punctuation costs 2.5\pt{} (\BUUAS{} vs.\ \BUUASnp), because UD attaches punctuation to content heads.
+\textbf{Root accuracy}: A \TtwoTestRoot\%, B \BRoot\% (B: 48--57\% for $k=128$), again consistent with the schedule effect.
+
+% =====================================================================================================
+\section{Task 3 -- BERT-derived static vectors}\label{sec:t3}
+Both average the layer-8 vectors of every training occurrence of a word type (mean over word pieces, then over occurrences), the
+mean/mean pooling that \citet{bommasani} found best, and evaluate with the Task~1 functions. A evaluates all 16,654 types; B's main
+comparison restricts T3 to T1's 8,865 types (and reports all types as a variant), which is why its covered sets are smaller.
+
+\begin{table}[h]\centering\footnotesize\setlength{\tabcolsep}{4pt}\input{generated/tab_t3_sem.tex}
+\caption{Semantic benchmarks. The ``203'' column scores every system on the same 203 pairs (A re-scored; Table~\ref{tab:cross}).
+B's T1-vocabulary variants also restrict the analogy candidates to 8,865 words, which raises covered accuracy.}\label{tab:t3sem}\end{table}
+\begin{table}[h]\centering\footnotesize\setlength{\tabcolsep}{4pt}\input{generated/tab_t3_struct.tex}
+\caption{Structural check (UUAS of the cosine-distance MST). The two implementations use different sentences (Table~\ref{tab:impl}), so
+compare rows within a column.}\label{tab:t3struct}\end{table}
+
+\noindent\textbf{Meaning: both find a large, significant gain.} On the same 203 pairs, $\rho$ goes from \XTOneSub{} (A) / \BWSCov{} (B) to
+\XTThreeSub{} / \BTSameWS; analogies go from below 1\% to 68--77\% on covered questions. A's paired tests make it explicit:
+$\Delta\rho=\PtWSDiff$ \PtWSCI, and T3 solves \PtANOnlyA{} analogy questions that T1 misses while T1 solves \PtANOnlyB{} that T3 misses.
+Both note that this is not a data-matched comparison: BERT brings pre-training on $\approx$3.3B words, and EWT only supplies the contexts.
+\textbf{Anisotropy:} removing the shared direction helps in both (A all-but-the-top \TThreeAWSCov; B centring \BTCenWS{} on 203 pairs,
+A's all-but-the-top on the same pairs \XTThreeASub), confirming that raw BERT vectors are anisotropic \citep{ethayarajh}.
+
+\noindent\textbf{Structure: both find no improvement.} T3 is below T1 on both 20-sentence samples (A \TThreeMST{} vs.\ \TOneMST; B
+\BTSameMST{} vs.\ \BMSTTwenty) and on both robustness sets (A \TThreePool{} vs.\ \TOnePool; B \BTSameFull{} vs.\ \BMSTFull), close to
+the random tree in both. A's tests show that the 20-sentence difference is not significant ($\Delta=\PtMSTDiff$\pt, CI \PtMSTCI) while the
+660-sentence one is ($\Delta=\PtPoolDiff$\pt, CI \PtPoolCI). B reaches the same conclusion from its larger full-test set.
+\textbf{The two evaluations therefore disagree, in both implementations.}
+
+\begin{table}[h]\centering\footnotesize\setlength{\tabcolsep}{4pt}\input{../report/generated/tab_t3_tests.tex}
+\caption{A's paired tests on identical items (analogy: questions solved only by A / only by B, exact McNemar $p$).}\label{tab:tests}\end{table}
+
+\noindent\textbf{Layer sweep (both).} The syntax layer is not the meaning layer (Fig.~\ref{fig:sweep}). WordSim peaks at layer~1 in both (A \BestSemWS{} on 248 pairs,
+B \BSweepWS{} on 203) and analogies at layer~2 (A \BestAnAcc\%, B \BSweepAN\%), matching \citet{bommasani} (layer 1, $\rho=0.683$ for
+bert-base-uncased with 10k contexts). The best layer for the static MST is layer~\ASweepMSTLayer{} in both (A \ASweepMST\%, B \BSweepMST\%),
+still close to chance. In A, raw WordSim falls with depth while anisotropy rises (\AnisoLzero{} $\to$ \AnisoMax); after all-but-the-top the
+curve is almost flat (\AbttWSMin--\AbttWSMax), so much of the decline is the ``narrow cone'' effect.
+\begin{figure}[t]\centering\includegraphics[width=0.92\textwidth]{layer_sweep.pdf}
+\caption{A's layer sweep: static vectors pooled from each layer (raw and all-but-the-top) vs.\ T1; the MST panel also shows raw contextual
+vectors and the probe on the same 660 sentences. B's sweep (its Fig.~2) has the same maxima: WordSim at layer 1, analogy at layer 2.}\label{fig:sweep}\end{figure}
+
+% =====================================================================================================
+\section{Why the semantic and syntactic answers disagree}\label{sec:why}
+B proposes three reasons; A tests each with a measurement (\texttt{diagnostics\_task3.py}, \texttt{extensions\_task3.py}).
+\begin{enumerate}
+\item \textbf{Pooling removes the context-dependent signal} (B). Measured by A's ladder on the same 660 sentences: static T3 \TThreePool\%
+$\to$ the same static vectors through the probe's matrix $B$ \LadProjPool\% $\to$ per-token contextual vectors, plain cosine \LadCtxPool\%
+$\to$ trained probe \TTwoRefPool\%.
+\item \textbf{The probe learns a projection; the MST check uses raw cosine} (B). Confirmed: even contextual vectors with raw cosine
+(\LadCtxPool\%) stay below the linear chain (\ChainPool\%). The tree is in a learned low-rank subspace, not in the raw geometry.
+\item \textbf{Edges join semantically dissimilar words; PPMI's window captures local co-occurrence} (B). A measured this as
+paradigmatic vs.\ syntagmatic similarity \citep{sahlgren}. \NNSameTThree{} of T3's 10 nearest neighbours share the word's part of speech
+(T1 \NNSameTOne; random \NNSameRandom): these are substitutes. \NNCoocTOne{} of T1's neighbours co-occur with the word within $\pm$5 (T3
+\NNCoocTThree; random \NNCoocRandom): these are partners. The direct test is whether closeness predicts attachment inside a sentence
+(edge AUC): T3 \AucTThree{} (no information), T1 \AucTOne{} (weakly informative), contextual \AucCtx, probe \AucProbe. One refinement: gold edges
+are \emph{not} mostly between different parts of speech \emph{relative to} non-edges (same-UPOS rate \GoldSameUpos{} vs.\ \GoldSameUposNon),
+so the effect is about similarity, not about word category.
+\end{enumerate}
+\begin{table}[h]\centering\footnotesize\setlength{\tabcolsep}{4pt}\input{../report/generated/tab_ladder.tex}
+\caption{A's diagnostic ladder on the same sentences; edge AUC = probability that a gold edge pair is closer than a non-edge pair in the same sentence.}\label{tab:ladder}\end{table}
+\begin{table}[h]\centering\footnotesize\setlength{\tabcolsep}{4pt}\input{../report/generated/tab_diag.tex}
+\caption{A's diagnostics: neighbour types, hubness, edge AUC and MST shape.}\label{tab:diag}\end{table}
+
+\noindent A adds a within-sentence hub effect: T3's MSTs are star-shaped around frequent function words (degree \FnDegTThree{} vs.\ gold \FnDegGold).
+B adds that OOV words (\BNoVecTwenty\% of the words in its sample) inject arbitrary distances into the MST, which A's in-vocabulary sample avoids.
+
+% =====================================================================================================
+\section{Qualitative analysis}\label{sec:qual}
+\textbf{The T1 neighbour lists agree across implementations} despite the different vocabularies and SVD solvers: \emph{monday} $\to$ friday, july,
+tuesday (both); \emph{good} $\to$ nice, food, great, really, pretty (both); \emph{said} $\to$ spokesman, gregg, maviglio, penman (both);
+\emph{computer} $\to$ disc, evidence, plans, mohammed (both). Both read them the same way: topical co-occurrence partners
+from the corpus (reviews, news) rather than synonyms. T3's neighbours are substitutes (Table~\ref{tab:nn}).
+\begin{table}[h]\centering\footnotesize\setlength{\tabcolsep}{4pt}\input{../report/generated/tab_nn.tex}
+\caption{Nearest neighbours in A (B's T1 lists, given in the text, agree).}\label{tab:nn}\end{table}
+
+\noindent\textbf{Task 2 errors} (A; examples chosen by rank among 10--18-word test sentences). The median sentence (UUAS
+\QTypicalUUAS) ``\QTypicalText'' loses the discourse attachment of ``Say'' and links the two subjects ``I'' to each other. The worst
+(\QPoorUUAS) is the verbless itinerary ``\QPoorText'', where the probe links \emph{repeated identical words} (to--to, Chicago--Chicago):
+identical word forms get similar BERT vectors, so lexical identity leaks into the syntactic distance (Fig.~\ref{fig:t2ex}).
+\begin{figure}[H]\centering
+\includegraphics[width=0.62\textwidth]{example_typical.pdf}\\[2pt]\includegraphics[width=0.62\textwidth]{example_poor.pdf}
+\caption{A's probe (layer 8) on the median and worst 10--18-word test sentences. Gold tree above, probe MST below (blue = correct, orange dashed = wrong).}
+\label{fig:t2ex}\end{figure}
+
+\noindent\textbf{Task 3 analogies} (A). T3 is near-perfect on regular morphology (plural \TThreePlural\%) and frequent capitals
+(\TThreeCapital\%) but fails on currency (\TThreeCurrency; ``real'' is always an adjective in EWT train). Its errors are near misses that pick
+a semantic neighbour over the morphological target (cooler $\to$ nicer, biggest $\to$ largest), which is the same substitute bias
+(Table~\ref{tab:analogy}). Fig.~\ref{fig:mstex} (appendix) shows one representative sentence of A's 20 (closest to every method's average): T1 and T3
+get \ExTOne\%, raw contextual vectors \ExCtx\%, the probe \ExProbe\%; the T3 tree is a star around ``a'' and ``of''.
+\begin{table}[h]\centering\footnotesize\setlength{\tabcolsep}{4pt}\input{../report/generated/tab_analogy.tex}
+\caption{A: analogy questions T3 solves and T1 does not (top) and T3 failures (bottom).}\label{tab:analogy}\end{table}
+
+
+% =====================================================================================================
+\section{Discussion}\label{sec:disc}
+\textbf{What the comparison adds.} Two independent implementations make the main claims much stronger: the best syntax layer, the T3
+semantic gain, the T3 structural failure, the disagreement between the two evaluations and the best static layers are all reproduced, and
+the Task~3 numbers match exactly once settings are aligned. The comparison also exposes \textbf{three choices that change numbers by more
+than the effects being studied}: (1)~the probe's learning-rate schedule (11--18\pt{} UUAS, and it flips the best rank);
+(2)~the evaluation subset (the 248 vs.\ 203 covered pairs move T1's $\rho$ from 0.10 to 0.17--0.19, and the MST sample moves the baselines by
+up to 8\pt); (3)~the OOV imputation rule for ``all 353'' (0.048 vs.\ 0.060 for A's own vectors). Reports should state these explicitly.
+
+\noindent\textbf{What worked / what did not.} The probe reproduces the paper when its schedule is reproduced; pooled BERT vectors are strong lexical
+vectors; one post-processing step (centring or all-but-the-top) helps. PPMI-SVD on 200k words does not work for analogies. Pooling from the
+\emph{syntax} layer does not produce \emph{syntactic} static vectors: the semantic benchmarks measure similarity between word types, while
+trees are relations between tokens in context, which pooling removes.
+
+\noindent\textbf{Limitations.} B's numbers are transcribed from B's report (no raw outputs); B's DSpr/NSpr definitions differ slightly from
+A's; each probe was trained once; the two MST samples differ; BERT vs.\ PPMI is not a data-matched comparison; one treebank.
+
+% =====================================================================================================
+\section{Reproducibility}\label{sec:repro}
+\textbf{A:} \texttt{SEED=42} (Python, NumPy, PyTorch) for the sample, baselines, bootstraps and SVD; probe seed $42+1000\ell+k$ (+500 depth);
+pinned EWT tag, gensim commit and model revision \texttt{86b5e09}; \texttt{python code/run\_all.py} or the Colab notebook runs everything;
+every number is generated from the outputs. Hardware: 2$\times$L40S; 78 probes in 49+54\,min.
+\textbf{B:} sentence-sample seed 42, SVD start vector 0, probe seed $1000k$ (+7 depth) + first layer of the chunk; EWT \texttt{.conllu} files;
+code at \url{https://github.com/trishitasaha/NLP_Assignment2}; Task~1 in about 13\,s on CPU.
+\textbf{Deviations from the specification} (both): T2 adds best-dev selection, and A also adds the paper's lr decay (justified by the control in
+\S\ref{sec:t2}); \lstar{} is chosen on dev, not test; WS-353 and analogies are reported on covered and on all items; the 20-sentence check is
+complemented by a larger set. A additionally probes layer 0 and excludes punctuation from the structural check.
+
+\FloatBarrier
+\begin{thebibliography}{99}\setlength{\itemsep}{0pt}\small
+\bibitem[Bommasani et~al.(2020)]{bommasani} R.~Bommasani, K.~Davis, C.~Cardie. Interpreting pretrained contextualized representations via reductions to static embeddings. \emph{ACL}, 2020.
+\bibitem[de~Marneffe et~al.(2021)]{ud} M.-C.~de~Marneffe, C.~D.~Manning, J.~Nivre, D.~Zeman. Universal Dependencies. \emph{Computational Linguistics} 47(2), 2021.
+\bibitem[Devlin et~al.(2019)]{devlin} J.~Devlin, M.-W.~Chang, K.~Lee, K.~Toutanova. BERT: pre-training of deep bidirectional transformers for language understanding. \emph{NAACL}, 2019.
+\bibitem[Ethayarajh(2019)]{ethayarajh} K.~Ethayarajh. How contextual are contextualized word representations? \emph{EMNLP}, 2019.
+\bibitem[Finkelstein et~al.(2002)]{ws353} L.~Finkelstein et~al. Placing search in context: the concept revisited. \emph{ACM TOIS} 20(1), 2002.
+\bibitem[Hewitt and Manning(2019)]{hewitt} J.~Hewitt, C.~D.~Manning. A structural probe for finding syntax in word representations. \emph{NAACL}, 2019.
+\bibitem[Levy and Goldberg(2014)]{levy2014} O.~Levy, Y.~Goldberg. Neural word embedding as implicit matrix factorization. \emph{NeurIPS}, 2014.
+\bibitem[Levy et~al.(2015)]{levy2015} O.~Levy, Y.~Goldberg, I.~Dagan. Improving distributional similarity with lessons learned from word embeddings. \emph{TACL} 3, 2015.
+\bibitem[Mikolov et~al.(2013)]{mikolov} T.~Mikolov, K.~Chen, G.~Corrado, J.~Dean. Efficient estimation of word representations in vector space. \emph{ICLR Workshop}, 2013.
+\bibitem[Mu and Viswanath(2018)]{mu} J.~Mu, P.~Viswanath. All-but-the-top: simple and effective postprocessing for word representations. \emph{ICLR}, 2018.
+\bibitem[Sahlgren(2006)]{sahlgren} M.~Sahlgren. \emph{The Word-Space Model}. PhD thesis, Stockholm University, 2006.
+\bibitem[Silveira et~al.(2014)]{silveira} N.~Silveira et~al. A gold standard dependency corpus for English. \emph{LREC}, 2014.
+\end{thebibliography}
+
+\clearpage
+\appendix
+\section{Additional material (implementation A)}
+\begin{figure}[H]\centering\includegraphics[width=0.80\textwidth]{mst_example.pdf}
+\caption{``\ExText'' -- gold tree (above) and the MST of each representation (below), implementation A.}\label{fig:mstex}\end{figure}
+\begin{table}[H]\centering\footnotesize\setlength{\tabcolsep}{4pt}\input{../report/generated/tab_sweep.tex}
+\caption{A's layer sweep in numbers (covered items; pool = 660 sentences).}\end{table}
+\begin{figure}[H]\centering\includegraphics[width=0.80\textwidth]{ladder.pdf}
+\caption{A's diagnostic ladder: MST UUAS on the 660-sentence pool (95\% CI) and on the 20 sentences.}\end{figure}
+\end{document}

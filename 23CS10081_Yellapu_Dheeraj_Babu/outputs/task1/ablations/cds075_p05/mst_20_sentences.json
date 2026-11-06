@@ -1,0 +1,2606 @@
+{
+ "name": "T1 PPMI+SVD [cds075_p05]",
+ "n_sentences": 20,
+ "n_edges": 234,
+ "uuas": 0.1623931623931624,
+ "uuas_ci95": [
+  0.11857183189481325,
+  0.2167576808400311
+ ],
+ "chain_uuas": 0.43162393162393164,
+ "chain_ci95": [
+  0.4056837600137959,
+  0.46369193024194405
+ ],
+ "random_uuas": 0.15226495726495726,
+ "vs_chain": {
+  "diff": -0.2692307692307692,
+  "ci_low": -0.3142881032011467,
+  "ci_high": -0.21428571428571427,
+  "frac_le_zero": 1.0
+ },
+ "vs_random": {
+  "diff": 0.010128205128205147,
+  "ci_low": -0.027576267482517455,
+  "ci_high": 0.044651187419768944,
+  "frac_le_zero": 0.273
+ },
+ "per_relation": {
+  "nsubj": {
+   "recovered": 3,
+   "total": 27,
+   "recall": 0.1111111111111111
+  },
+  "det": {
+   "recovered": 4,
+   "total": 25,
+   "recall": 0.16
+  },
+  "case": {
+   "recovered": 3,
+   "total": 22,
+   "recall": 0.13636363636363635
+  },
+  "advmod": {
+   "recovered": 4,
+   "total": 18,
+   "recall": 0.2222222222222222
+  },
+  "conj": {
+   "recovered": 2,
+   "total": 15,
+   "recall": 0.13333333333333333
+  },
+  "obl": {
+   "recovered": 2,
+   "total": 14,
+   "recall": 0.14285714285714285
+  },
+  "cc": {
+   "recovered": 1,
+   "total": 14,
+   "recall": 0.07142857142857142
+  },
+  "aux": {
+   "recovered": 4,
+   "total": 13,
+   "recall": 0.3076923076923077
+  },
+  "compound": {
+   "recovered": 6,
+   "total": 12,
+   "recall": 0.5
+  },
+  "nmod": {
+   "recovered": 1,
+   "total": 11,
+   "recall": 0.09090909090909091
+  },
+  "obj": {
+   "recovered": 2,
+   "total": 11,
+   "recall": 0.18181818181818182
+  },
+  "mark": {
+   "recovered": 1,
+   "total": 11,
+   "recall": 0.09090909090909091
+  },
+  "cop": {
+   "recovered": 1,
+   "total": 8,
+   "recall": 0.125
+  },
+  "amod": {
+   "recovered": 2,
+   "total": 7,
+   "recall": 0.2857142857142857
+  },
+  "acl": {
+   "recovered": 1,
+   "total": 6,
+   "recall": 0.16666666666666666
+  },
+  "xcomp": {
+   "recovered": 0,
+   "total": 6,
+   "recall": 0.0
+  },
+  "advcl": {
+   "recovered": 0,
+   "total": 5,
+   "recall": 0.0
+  },
+  "iobj": {
+   "recovered": 0,
+   "total": 2,
+   "recall": 0.0
+  },
+  "ccomp": {
+   "recovered": 0,
+   "total": 2,
+   "recall": 0.0
+  },
+  "discourse": {
+   "recovered": 0,
+   "total": 1,
+   "recall": 0.0
+  },
+  "flat": {
+   "recovered": 1,
+   "total": 1,
+   "recall": 1.0
+  },
+  "list": {
+   "recovered": 0,
+   "total": 1,
+   "recall": 0.0
+  },
+  "expl": {
+   "recovered": 0,
+   "total": 1,
+   "recall": 0.0
+  },
+  "fixed": {
+   "recovered": 0,
+   "total": 1,
+   "recall": 0.0
+  }
+ },
+ "per_sentence": [
+  {
+   "sent_id": "answers-20111106230959AAuYQ5Q_ans-0006",
+   "text": "Bike ride in the park, followed by coffee.",
+   "n_words": 8,
+   "total": 7,
+   "correct": 1,
+   "chain_correct": 3,
+   "random_correct": 1.7,
+   "gold_edges": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     7,
+     8
+    ]
+   ],
+   "pred_edges": [
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     8
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     3,
+     6
+    ]
+   ],
+   "tokens": [
+    "Bike",
+    "ride",
+    "in",
+    "the",
+    "park",
+    ",",
+    "followed",
+    "by",
+    "coffee",
+    "."
+   ]
+  },
+  {
+   "sent_id": "answers-20111107035344AAdi9dS_ans-0003",
+   "text": "But my resturant is way better than all of them...and it's quite close.",
+   "n_words": 15,
+   "total": 14,
+   "correct": 1,
+   "chain_correct": 5,
+   "random_correct": 1.85,
+   "gold_edges": [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     5,
+     15
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     7,
+     9
+    ],
+    [
+     8,
+     9
+    ],
+    [
+     11,
+     15
+    ],
+    [
+     12,
+     15
+    ],
+    [
+     13,
+     15
+    ],
+    [
+     14,
+     15
+    ]
+   ],
+   "pred_edges": [
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     12
+    ],
+    [
+     1,
+     11
+    ],
+    [
+     2,
+     13
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     3,
+     11
+    ],
+    [
+     4,
+     15
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     5,
+     14
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     7,
+     11
+    ],
+    [
+     9,
+     12
+    ],
+    [
+     12,
+     13
+    ]
+   ],
+   "tokens": [
+    "But",
+    "my",
+    "resturant",
+    "is",
+    "way",
+    "better",
+    "than",
+    "all",
+    "of",
+    "them",
+    "...",
+    "and",
+    "it",
+    "'s",
+    "quite",
+    "close",
+    "."
+   ]
+  },
+  {
+   "sent_id": "answers-20111107082312AAPNaxb_ans-0006",
+   "text": "All-you can-eat style deal.",
+   "n_words": 6,
+   "total": 5,
+   "correct": 2,
+   "chain_correct": 2,
+   "random_correct": 1.77,
+   "gold_edges": [
+    [
+     0,
+     5
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     6,
+     7
+    ]
+   ],
+   "pred_edges": [
+    [
+     0,
+     3
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     6,
+     7
+    ]
+   ],
+   "tokens": [
+    "All",
+    "-",
+    "you",
+    "can",
+    "-",
+    "eat",
+    "style",
+    "deal",
+    "."
+   ]
+  },
+  {
+   "sent_id": "answers-20111107214231AA68BMD_ans-0004",
+   "text": "I haven't personally but I know a couple of people who have.",
+   "n_words": 13,
+   "total": 12,
+   "correct": 1,
+   "chain_correct": 6,
+   "random_correct": 1.87,
+   "gold_edges": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     8,
+     10
+    ],
+    [
+     8,
+     12
+    ],
+    [
+     9,
+     10
+    ],
+    [
+     11,
+     12
+    ]
+   ],
+   "pred_edges": [
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     12
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     7,
+     9
+    ],
+    [
+     7,
+     12
+    ],
+    [
+     9,
+     11
+    ],
+    [
+     10,
+     11
+    ]
+   ],
+   "tokens": [
+    "I",
+    "have",
+    "n't",
+    "personally",
+    "but",
+    "I",
+    "know",
+    "a",
+    "couple",
+    "of",
+    "people",
+    "who",
+    "have",
+    "."
+   ]
+  },
+  {
+   "sent_id": "answers-20111108083559AAp6Jfq_ans-0001",
+   "text": "Which Compact System Camera Should I Get...?",
+   "n_words": 7,
+   "total": 6,
+   "correct": 3,
+   "chain_correct": 3,
+   "random_correct": 1.9,
+   "gold_edges": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "pred_edges": [
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "tokens": [
+    "Which",
+    "Compact",
+    "System",
+    "Camera",
+    "Should",
+    "I",
+    "Get",
+    "...",
+    "?"
+   ]
+  },
+  {
+   "sent_id": "email-enronsent29_02-0002",
+   "text": "Please give me a call to discuss Nov transaction.",
+   "n_words": 9,
+   "total": 8,
+   "correct": 2,
+   "chain_correct": 5,
+   "random_correct": 1.83,
+   "gold_edges": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     7,
+     8
+    ]
+   ],
+   "pred_edges": [
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     8
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     7,
+     8
+    ]
+   ],
+   "tokens": [
+    "Please",
+    "give",
+    "me",
+    "a",
+    "call",
+    "to",
+    "discuss",
+    "Nov",
+    "transaction",
+    "."
+   ]
+  },
+  {
+   "sent_id": "email-enronsent29_02-0006",
+   "text": "The game is at 12:Sat @ Compaq Center.",
+   "n_words": 9,
+   "total": 8,
+   "correct": 2,
+   "chain_correct": 4,
+   "random_correct": 1.7,
+   "gold_edges": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     4,
+     9
+    ],
+    [
+     7,
+     9
+    ],
+    [
+     8,
+     9
+    ]
+   ],
+   "pred_edges": [
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     9
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     8,
+     9
+    ]
+   ],
+   "tokens": [
+    "The",
+    "game",
+    "is",
+    "at",
+    "12",
+    ":",
+    "Sat",
+    "@",
+    "Compaq",
+    "Center",
+    "."
+   ]
+  },
+  {
+   "sent_id": "email-enronsent29_02-0039",
+   "text": "I better pass on the Comets game.",
+   "n_words": 7,
+   "total": 6,
+   "correct": 1,
+   "chain_correct": 2,
+   "random_correct": 1.61,
+   "gold_edges": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "pred_edges": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "tokens": [
+    "I",
+    "better",
+    "pass",
+    "on",
+    "the",
+    "Comets",
+    "game",
+    "."
+   ]
+  },
+  {
+   "sent_id": "email-enronsent36_01-0032",
+   "text": "I just wanted to follow up on whether you will have a chance to send a draft Credit Support Annex (similar in form to the one previously executed with ENA).",
+   "n_words": 30,
+   "total": 29,
+   "correct": 3,
+   "chain_correct": 13,
+   "random_correct": 1.89,
+   "gold_edges": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     10
+    ],
+    [
+     6,
+     10
+    ],
+    [
+     7,
+     10
+    ],
+    [
+     8,
+     10
+    ],
+    [
+     9,
+     10
+    ],
+    [
+     10,
+     12
+    ],
+    [
+     11,
+     12
+    ],
+    [
+     12,
+     14
+    ],
+    [
+     13,
+     14
+    ],
+    [
+     14,
+     19
+    ],
+    [
+     15,
+     19
+    ],
+    [
+     16,
+     19
+    ],
+    [
+     17,
+     18
+    ],
+    [
+     18,
+     19
+    ],
+    [
+     19,
+     21
+    ],
+    [
+     21,
+     23
+    ],
+    [
+     21,
+     26
+    ],
+    [
+     22,
+     23
+    ],
+    [
+     24,
+     26
+    ],
+    [
+     25,
+     26
+    ],
+    [
+     26,
+     28
+    ],
+    [
+     27,
+     28
+    ],
+    [
+     28,
+     30
+    ],
+    [
+     29,
+     30
+    ]
+   ],
+   "pred_edges": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     8
+    ],
+    [
+     0,
+     11
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     12
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     3,
+     13
+    ],
+    [
+     3,
+     14
+    ],
+    [
+     3,
+     24
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     11
+    ],
+    [
+     6,
+     22
+    ],
+    [
+     10,
+     11
+    ],
+    [
+     11,
+     15
+    ],
+    [
+     11,
+     22
+    ],
+    [
+     11,
+     26
+    ],
+    [
+     11,
+     29
+    ],
+    [
+     12,
+     27
+    ],
+    [
+     14,
+     16
+    ],
+    [
+     16,
+     17
+    ],
+    [
+     16,
+     23
+    ],
+    [
+     16,
+     28
+    ],
+    [
+     17,
+     19
+    ],
+    [
+     18,
+     19
+    ],
+    [
+     21,
+     26
+    ],
+    [
+     22,
+     25
+    ],
+    [
+     23,
+     30
+    ]
+   ],
+   "tokens": [
+    "I",
+    "just",
+    "wanted",
+    "to",
+    "follow",
+    "up",
+    "on",
+    "whether",
+    "you",
+    "will",
+    "have",
+    "a",
+    "chance",
+    "to",
+    "send",
+    "a",
+    "draft",
+    "Credit",
+    "Support",
+    "Annex",
+    "(",
+    "similar",
+    "in",
+    "form",
+    "to",
+    "the",
+    "one",
+    "previously",
+    "executed",
+    "with",
+    "ENA",
+    ")",
+    "."
+   ]
+  },
+  {
+   "sent_id": "newsgroup-groups.google.com_GayNews_0f9e221229ed0ee5_ENG_20050307_110600-0002",
+   "text": "By Deb Price / The Detroit News",
+   "n_words": 6,
+   "total": 5,
+   "correct": 2,
+   "chain_correct": 3,
+   "random_correct": 1.59,
+   "gold_edges": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "pred_edges": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     4,
+     6
+    ]
+   ],
+   "tokens": [
+    "By",
+    "Deb",
+    "Price",
+    "/",
+    "The",
+    "Detroit",
+    "News"
+   ]
+  },
+  {
+   "sent_id": "reviews-042530-0002",
+   "text": "I live in the neighborhood and this place is one of my favorites for a tasty, quick and inexpensive meal.",
+   "n_words": 20,
+   "total": 19,
+   "correct": 4,
+   "chain_correct": 7,
+   "random_correct": 1.86,
+   "gold_edges": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     1,
+     9
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     9
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     7,
+     9
+    ],
+    [
+     8,
+     9
+    ],
+    [
+     9,
+     12
+    ],
+    [
+     10,
+     12
+    ],
+    [
+     11,
+     12
+    ],
+    [
+     12,
+     20
+    ],
+    [
+     13,
+     20
+    ],
+    [
+     14,
+     20
+    ],
+    [
+     15,
+     17
+    ],
+    [
+     15,
+     19
+    ],
+    [
+     15,
+     20
+    ],
+    [
+     18,
+     19
+    ]
+   ],
+   "pred_edges": [
+    [
+     0,
+     11
+    ],
+    [
+     0,
+     14
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     2,
+     10
+    ],
+    [
+     2,
+     14
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     5,
+     14
+    ],
+    [
+     5,
+     18
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     8,
+     14
+    ],
+    [
+     9,
+     14
+    ],
+    [
+     11,
+     12
+    ],
+    [
+     13,
+     14
+    ],
+    [
+     15,
+     17
+    ],
+    [
+     17,
+     20
+    ],
+    [
+     18,
+     20
+    ],
+    [
+     19,
+     20
+    ]
+   ],
+   "tokens": [
+    "I",
+    "live",
+    "in",
+    "the",
+    "neighborhood",
+    "and",
+    "this",
+    "place",
+    "is",
+    "one",
+    "of",
+    "my",
+    "favorites",
+    "for",
+    "a",
+    "tasty",
+    ",",
+    "quick",
+    "and",
+    "inexpensive",
+    "meal",
+    "."
+   ]
+  },
+  {
+   "sent_id": "reviews-118679-0001",
+   "text": "I really want to like this place since I work right around the corner.",
+   "n_words": 14,
+   "total": 13,
+   "correct": 1,
+   "chain_correct": 5,
+   "random_correct": 1.73,
+   "gold_edges": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     9
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     7,
+     9
+    ],
+    [
+     8,
+     9
+    ],
+    [
+     9,
+     13
+    ],
+    [
+     10,
+     13
+    ],
+    [
+     11,
+     13
+    ],
+    [
+     12,
+     13
+    ]
+   ],
+   "pred_edges": [
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     0,
+     8
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     5,
+     12
+    ],
+    [
+     6,
+     10
+    ],
+    [
+     6,
+     11
+    ],
+    [
+     10,
+     13
+    ]
+   ],
+   "tokens": [
+    "I",
+    "really",
+    "want",
+    "to",
+    "like",
+    "this",
+    "place",
+    "since",
+    "I",
+    "work",
+    "right",
+    "around",
+    "the",
+    "corner",
+    "."
+   ]
+  },
+  {
+   "sent_id": "reviews-155050-0002",
+   "text": "service could be a little better but its an all round good place",
+   "n_words": 14,
+   "total": 13,
+   "correct": 2,
+   "chain_correct": 5,
+   "random_correct": 1.56,
+   "gold_edges": [
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     13
+    ],
+    [
+     6,
+     13
+    ],
+    [
+     7,
+     13
+    ],
+    [
+     8,
+     13
+    ],
+    [
+     9,
+     13
+    ],
+    [
+     10,
+     11
+    ],
+    [
+     11,
+     12
+    ],
+    [
+     12,
+     13
+    ]
+   ],
+   "pred_edges": [
+    [
+     0,
+     5
+    ],
+    [
+     0,
+     12
+    ],
+    [
+     0,
+     13
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     10
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     4,
+     11
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     7,
+     12
+    ]
+   ],
+   "tokens": [
+    "service",
+    "could",
+    "be",
+    "a",
+    "little",
+    "better",
+    "but",
+    "it",
+    "s",
+    "an",
+    "all",
+    "round",
+    "good",
+    "place"
+   ]
+  },
+  {
+   "sent_id": "reviews-178726-0007",
+   "text": "Thanks for the great care!!!!",
+   "n_words": 5,
+   "total": 4,
+   "correct": 1,
+   "chain_correct": 1,
+   "random_correct": 1.49,
+   "gold_edges": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ]
+   ],
+   "pred_edges": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     4
+    ]
+   ],
+   "tokens": [
+    "Thanks",
+    "for",
+    "the",
+    "great",
+    "care",
+    "!!!!"
+   ]
+  },
+  {
+   "sent_id": "reviews-214912-0004",
+   "text": "Your children will be taken care of and loved by a professional staff.",
+   "n_words": 13,
+   "total": 12,
+   "correct": 3,
+   "chain_correct": 5,
+   "random_correct": 1.97,
+   "gold_edges": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     8,
+     12
+    ],
+    [
+     9,
+     12
+    ],
+    [
+     10,
+     12
+    ],
+    [
+     11,
+     12
+    ]
+   ],
+   "pred_edges": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     5,
+     11
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     6,
+     10
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     7,
+     10
+    ],
+    [
+     7,
+     12
+    ],
+    [
+     11,
+     12
+    ]
+   ],
+   "tokens": [
+    "Your",
+    "children",
+    "will",
+    "be",
+    "taken",
+    "care",
+    "of",
+    "and",
+    "loved",
+    "by",
+    "a",
+    "professional",
+    "staff",
+    "."
+   ]
+  },
+  {
+   "sent_id": "reviews-216281-0001",
+   "text": "On time, Clean and very nice",
+   "n_words": 6,
+   "total": 5,
+   "correct": 1,
+   "chain_correct": 3,
+   "random_correct": 1.7,
+   "gold_edges": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "pred_edges": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "tokens": [
+    "On",
+    "time",
+    ",",
+    "Clean",
+    "and",
+    "very",
+    "nice"
+   ]
+  },
+  {
+   "sent_id": "reviews-241108-0004",
+   "text": "Did services I asked them NOTto do and was still charged.",
+   "n_words": 12,
+   "total": 11,
+   "correct": 3,
+   "chain_correct": 5,
+   "random_correct": 1.81,
+   "gold_edges": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     11
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     8,
+     11
+    ],
+    [
+     9,
+     11
+    ],
+    [
+     10,
+     11
+    ]
+   ],
+   "pred_edges": [
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     0,
+     11
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     5,
+     9
+    ],
+    [
+     5,
+     10
+    ],
+    [
+     8,
+     9
+    ]
+   ],
+   "tokens": [
+    "Did",
+    "services",
+    "I",
+    "asked",
+    "them",
+    "NOT",
+    "to",
+    "do",
+    "and",
+    "was",
+    "still",
+    "charged",
+    "."
+   ]
+  },
+  {
+   "sent_id": "reviews-325330-0002",
+   "text": "Overpriced and the doctor acted arrogant and rushed at a time when there was very few clients in the facility.",
+   "n_words": 20,
+   "total": 19,
+   "correct": 2,
+   "chain_correct": 9,
+   "random_correct": 1.92,
+   "gold_edges": [
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     7,
+     10
+    ],
+    [
+     7,
+     13
+    ],
+    [
+     8,
+     10
+    ],
+    [
+     9,
+     10
+    ],
+    [
+     11,
+     13
+    ],
+    [
+     12,
+     13
+    ],
+    [
+     13,
+     16
+    ],
+    [
+     14,
+     15
+    ],
+    [
+     15,
+     16
+    ],
+    [
+     16,
+     19
+    ],
+    [
+     17,
+     19
+    ],
+    [
+     18,
+     19
+    ]
+   ],
+   "pred_edges": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     1,
+     9
+    ],
+    [
+     1,
+     14
+    ],
+    [
+     2,
+     17
+    ],
+    [
+     2,
+     18
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     3,
+     12
+    ],
+    [
+     3,
+     19
+    ],
+    [
+     4,
+     11
+    ],
+    [
+     8,
+     9
+    ],
+    [
+     8,
+     10
+    ],
+    [
+     9,
+     12
+    ],
+    [
+     9,
+     13
+    ],
+    [
+     9,
+     15
+    ],
+    [
+     9,
+     17
+    ],
+    [
+     11,
+     13
+    ],
+    [
+     11,
+     16
+    ]
+   ],
+   "tokens": [
+    "Overpriced",
+    "and",
+    "the",
+    "doctor",
+    "acted",
+    "arrogant",
+    "and",
+    "rushed",
+    "at",
+    "a",
+    "time",
+    "when",
+    "there",
+    "was",
+    "very",
+    "few",
+    "clients",
+    "in",
+    "the",
+    "facility",
+    "."
+   ]
+  },
+  {
+   "sent_id": "reviews-325741-0002",
+   "text": "It was late in the day and I was worried I would get charged an arm and a leg and have to wait forever.",
+   "n_words": 24,
+   "total": 23,
+   "correct": 0,
+   "chain_correct": 9,
+   "random_correct": 1.9,
+   "gold_edges": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     2,
+     9
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     7,
+     9
+    ],
+    [
+     8,
+     9
+    ],
+    [
+     9,
+     13
+    ],
+    [
+     10,
+     13
+    ],
+    [
+     11,
+     13
+    ],
+    [
+     12,
+     13
+    ],
+    [
+     13,
+     15
+    ],
+    [
+     13,
+     20
+    ],
+    [
+     14,
+     15
+    ],
+    [
+     15,
+     18
+    ],
+    [
+     16,
+     18
+    ],
+    [
+     17,
+     18
+    ],
+    [
+     19,
+     20
+    ],
+    [
+     20,
+     22
+    ],
+    [
+     21,
+     22
+    ],
+    [
+     22,
+     23
+    ]
+   ],
+   "pred_edges": [
+    [
+     0,
+     7
+    ],
+    [
+     0,
+     12
+    ],
+    [
+     0,
+     17
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     1,
+     17
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     3,
+     17
+    ],
+    [
+     5,
+     12
+    ],
+    [
+     6,
+     16
+    ],
+    [
+     6,
+     17
+    ],
+    [
+     6,
+     19
+    ],
+    [
+     7,
+     10
+    ],
+    [
+     9,
+     22
+    ],
+    [
+     11,
+     15
+    ],
+    [
+     11,
+     21
+    ],
+    [
+     12,
+     18
+    ],
+    [
+     12,
+     21
+    ],
+    [
+     12,
+     22
+    ],
+    [
+     12,
+     23
+    ],
+    [
+     13,
+     18
+    ],
+    [
+     14,
+     17
+    ],
+    [
+     17,
+     20
+    ]
+   ],
+   "tokens": [
+    "It",
+    "was",
+    "late",
+    "in",
+    "the",
+    "day",
+    "and",
+    "I",
+    "was",
+    "worried",
+    "I",
+    "would",
+    "get",
+    "charged",
+    "an",
+    "arm",
+    "and",
+    "a",
+    "leg",
+    "and",
+    "have",
+    "to",
+    "wait",
+    "forever",
+    "."
+   ]
+  },
+  {
+   "sent_id": "weblog-juancole.com_juancole_20040722101300_ENG_20040722_101300-0006",
+   "text": "Of course Bush would have tried to stop 9/11 if he had known it was coming.",
+   "n_words": 16,
+   "total": 15,
+   "correct": 3,
+   "chain_correct": 6,
+   "random_correct": 1.98,
+   "gold_edges": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     5,
+     12
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     9,
+     12
+    ],
+    [
+     10,
+     12
+    ],
+    [
+     11,
+     12
+    ],
+    [
+     12,
+     15
+    ],
+    [
+     13,
+     15
+    ],
+    [
+     14,
+     15
+    ]
+   ],
+   "pred_edges": [
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     9
+    ],
+    [
+     4,
+     11
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     6,
+     13
+    ],
+    [
+     7,
+     15
+    ],
+    [
+     10,
+     13
+    ],
+    [
+     10,
+     14
+    ],
+    [
+     11,
+     12
+    ]
+   ],
+   "tokens": [
+    "Of",
+    "course",
+    "Bush",
+    "would",
+    "have",
+    "tried",
+    "to",
+    "stop",
+    "9/11",
+    "if",
+    "he",
+    "had",
+    "known",
+    "it",
+    "was",
+    "coming",
+    "."
+   ]
+  }
+ ]
+}

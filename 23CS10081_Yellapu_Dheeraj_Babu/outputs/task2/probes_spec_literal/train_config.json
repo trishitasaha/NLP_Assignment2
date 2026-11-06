@@ -1,0 +1,24 @@
+{
+ "layers": [
+  7,
+  8,
+  9,
+  10,
+  11,
+  12
+ ],
+ "ranks": [
+  128
+ ],
+ "probes": [
+  "distance",
+  "depth"
+ ],
+ "epochs": 30,
+ "batch_size": 20,
+ "lr": 0.001,
+ "tag": "spec_literal",
+ "max_train_sents": null,
+ "no_decay": true,
+ "keep_last": true
+}

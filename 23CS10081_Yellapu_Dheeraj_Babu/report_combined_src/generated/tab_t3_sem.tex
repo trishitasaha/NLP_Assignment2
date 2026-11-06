@@ -1,0 +1,16 @@
+\begin{tabular}{llcccc}
+\toprule
+ & & \multicolumn{2}{c}{WordSim-353 $\rho$} & \multicolumn{2}{c}{analogy accuracy (\%)} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+impl. & system & 248 covered & 203 (count $\ge$2) & covered & all 19,544 \\
+\midrule
+A & T1 PPMI-SVD & 0.104 (248) & 0.171 & 0.51 (5,727) & 0.15 \\
+B & T1 PPMI-SVD (count $\ge$2) & -- & 0.189 & 0.85 (3,406) & 0.15 \\
+\midrule A & T3 layer 8, all types & 0.577 (248) & 0.648 & 67.7 (5,727) & 19.8 \\
+B & T3 layer 8, all types & 0.577 (248) & -- & 67.7 (5,727) & 19.8 \\
+B & T3 layer 8, T1 vocabulary (main) & -- & 0.648 & 77.1 (3,406) & 13.4 \\
+\midrule A & T3 + all-but-the-top ($D{=}7$) & 0.682 (248) & 0.716 & 71.0 (5,727) & 20.8 \\
+B & T3 mean-centred (T1 vocab.) & -- & 0.706 & 78.3 (3,406) & 13.7 \\
+B & T3 centred + PCA-100 (T1 vocab.) & -- & 0.678 & 81.4 (3,406) & 14.2 \\
+\bottomrule
+\end{tabular}

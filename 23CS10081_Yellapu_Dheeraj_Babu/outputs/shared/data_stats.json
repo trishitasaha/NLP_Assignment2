@@ -1,0 +1,455 @@
+{
+  "versions": {
+    "python": "3.12.16",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "pandas": "3.1.1",
+    "matplotlib": "3.11.2",
+    "torch": "2.15.0+cu132",
+    "transformers": "5.22.1",
+    "datasets": "5.1.0",
+    "huggingface_hub": "2.4.0",
+    "tqdm": "4.70.1",
+    "cuda_available": true,
+    "cuda_devices": [
+      "NVIDIA L40S",
+      "NVIDIA L40S"
+    ]
+  },
+  "ewt_revision": "ud2.18-loader-v2.3.0",
+  "splits": {
+    "train": {
+      "n_sentences": 12544,
+      "n_tokens": 204578,
+      "mean_len": 16.308832908163264,
+      "median_len": 14.0,
+      "max_len": 159,
+      "n_len_5_50": 10324,
+      "n_punct_tokens": 23596,
+      "sentences_with_mwt": 2192,
+      "sentences_with_empty_nodes": 35,
+      "n_invalid_trees": 0,
+      "invalid_examples": [],
+      "mst_selftest_mismatches": 0,
+      "punct_nonleaf_tokens": 5,
+      "punct_nonleaf_sentences": 5,
+      "example": {
+        "sent_id": "weblog-juancole.com_juancole_20051126063000_ENG_20051126_063000-0001",
+        "tokens": [
+          "Al",
+          "-",
+          "Zaman",
+          ":",
+          "American",
+          "forces",
+          "killed",
+          "Shaikh",
+          "Abdullah",
+          "al",
+          "-",
+          "Ani",
+          ",",
+          "the",
+          "preacher"
+        ],
+        "upos": [
+          "PROPN",
+          "PUNCT",
+          "PROPN",
+          "PUNCT",
+          "ADJ",
+          "NOUN",
+          "VERB",
+          "PROPN",
+          "PROPN",
+          "PROPN",
+          "PUNCT",
+          "PROPN",
+          "PUNCT",
+          "DET",
+          "NOUN"
+        ],
+        "heads": [
+          0,
+          3,
+          1,
+          7,
+          6,
+          7,
+          1,
+          7,
+          8,
+          8,
+          12,
+          8,
+          15,
+          15,
+          8
+        ],
+        "deprels": [
+          "root",
+          "punct",
+          "flat",
+          "punct",
+          "amod",
+          "nsubj",
+          "parataxis",
+          "obj",
+          "flat",
+          "flat",
+          "punct",
+          "flat",
+          "punct",
+          "det",
+          "appos"
+        ]
+      }
+    },
+    "dev": {
+      "n_sentences": 2001,
+      "n_tokens": 25148,
+      "mean_len": 12.567716141929035,
+      "median_len": 10.0,
+      "max_len": 75,
+      "n_len_5_50": 1526,
+      "n_punct_tokens": 3075,
+      "sentences_with_mwt": 303,
+      "sentences_with_empty_nodes": 3,
+      "n_invalid_trees": 0,
+      "invalid_examples": [],
+      "mst_selftest_mismatches": 0,
+      "punct_nonleaf_tokens": 4,
+      "punct_nonleaf_sentences": 4,
+      "example": {
+        "sent_id": "weblog-blogspot.com_nominations_20041117172713_ENG_20041117_172713-0001",
+        "tokens": [
+          "From",
+          "the",
+          "AP",
+          "comes",
+          "this",
+          "story",
+          ":"
+        ],
+        "upos": [
+          "ADP",
+          "DET",
+          "PROPN",
+          "VERB",
+          "DET",
+          "NOUN",
+          "PUNCT"
+        ],
+        "heads": [
+          3,
+          3,
+          4,
+          0,
+          6,
+          4,
+          4
+        ],
+        "deprels": [
+          "case",
+          "det",
+          "obl",
+          "root",
+          "det",
+          "nsubj",
+          "punct"
+        ]
+      }
+    },
+    "test": {
+      "n_sentences": 2077,
+      "n_tokens": 25094,
+      "mean_len": 12.08184882041406,
+      "median_len": 9.0,
+      "max_len": 81,
+      "n_len_5_50": 1519,
+      "n_punct_tokens": 3096,
+      "sentences_with_mwt": 302,
+      "sentences_with_empty_nodes": 2,
+      "n_invalid_trees": 0,
+      "invalid_examples": [],
+      "mst_selftest_mismatches": 0,
+      "punct_nonleaf_tokens": 1,
+      "punct_nonleaf_sentences": 1,
+      "example": {
+        "sent_id": "weblog-blogspot.com_zentelligence_20040423000200_ENG_20040423_000200-0001",
+        "tokens": [
+          "What",
+          "if",
+          "Google",
+          "Morphed",
+          "Into",
+          "GoogleOS",
+          "?"
+        ],
+        "upos": [
+          "PRON",
+          "SCONJ",
+          "PROPN",
+          "VERB",
+          "ADP",
+          "PROPN",
+          "PUNCT"
+        ],
+        "heads": [
+          0,
+          4,
+          4,
+          1,
+          6,
+          4,
+          4
+        ],
+        "deprels": [
+          "root",
+          "mark",
+          "nsubj",
+          "advcl",
+          "case",
+          "obl",
+          "punct"
+        ]
+      }
+    }
+  },
+  "vocab": {
+    "n_types": 16654,
+    "n_tokens": 204578,
+    "types_count_1": 7789,
+    "types_count_2_4": 4946,
+    "types_count_ge5": 3919,
+    "test_token_oov_rate": 0.07499800749183072,
+    "top20": [
+      [
+        "the",
+        9075
+      ],
+      [
+        ".",
+        8640
+      ],
+      [
+        ",",
+        7021
+      ],
+      [
+        "to",
+        5137
+      ],
+      [
+        "and",
+        5002
+      ],
+      [
+        "a",
+        3782
+      ],
+      [
+        "of",
+        3622
+      ],
+      [
+        "i",
+        3380
+      ],
+      [
+        "in",
+        3112
+      ],
+      [
+        "is",
+        2239
+      ],
+      [
+        "you",
+        2156
+      ],
+      [
+        "that",
+        2036
+      ],
+      [
+        "it",
+        1849
+      ],
+      [
+        "for",
+        1842
+      ],
+      [
+        "-",
+        1422
+      ],
+      [
+        "have",
+        1357
+      ],
+      [
+        "\"",
+        1296
+      ],
+      [
+        "on",
+        1273
+      ],
+      [
+        "was",
+        1244
+      ],
+      [
+        "with",
+        1216
+      ]
+    ]
+  },
+  "benchmark_sha256": {
+    "wordsim353": "f92a022fc2537793a15bc3a8c162ebcd74990e033a228bb6388cb71e4c0b1e1d",
+    "google_analogy": "8c29b3332afc46f3fb8be04cb5297bf96f39aa7131272dff57869b4485b22a36"
+  },
+  "wordsim": {
+    "n_pairs": 353,
+    "n_covered": 248,
+    "pair_coverage": 0.7025495750708215,
+    "n_words": 437,
+    "word_coverage": 0.7963386727688787,
+    "median_train_count_of_covered_words": 11.0,
+    "oov_words_sample": [
+      "antecedent",
+      "anxiety",
+      "architecture",
+      "artifact",
+      "astronomer",
+      "asylum",
+      "automobile",
+      "basketball",
+      "benchmark",
+      "boxing",
+      "brandy",
+      "carnivore",
+      "cemetery",
+      "championship",
+      "chemistry",
+      "chord",
+      "closet",
+      "cognition",
+      "computation",
+      "constellation",
+      "crane",
+      "criterion",
+      "cucumber",
+      "decoration",
+      "defeating",
+      "deployment",
+      "discipline",
+      "dividend",
+      "drought",
+      "fauna"
+    ]
+  },
+  "analogy": {
+    "n_questions": 19544,
+    "n_covered": 5727,
+    "coverage": 0.2930311092918543,
+    "per_section": {
+      "capital-common-countries": {
+        "n": 506,
+        "covered": 156,
+        "coverage": 0.308300395256917
+      },
+      "capital-world": {
+        "n": 4524,
+        "covered": 155,
+        "coverage": 0.03426171529619806
+      },
+      "currency": {
+        "n": 866,
+        "covered": 28,
+        "coverage": 0.03233256351039261
+      },
+      "city-in-state": {
+        "n": 2467,
+        "covered": 227,
+        "coverage": 0.09201459262261856
+      },
+      "family": {
+        "n": 506,
+        "covered": 210,
+        "coverage": 0.4150197628458498
+      },
+      "gram1-adjective-to-adverb": {
+        "n": 992,
+        "covered": 702,
+        "coverage": 0.7076612903225806
+      },
+      "gram2-opposite": {
+        "n": 812,
+        "covered": 156,
+        "coverage": 0.1921182266009852
+      },
+      "gram3-comparative": {
+        "n": 1332,
+        "covered": 930,
+        "coverage": 0.6981981981981982
+      },
+      "gram4-superlative": {
+        "n": 1122,
+        "covered": 380,
+        "coverage": 0.33868092691622104
+      },
+      "gram5-present-participle": {
+        "n": 1056,
+        "covered": 506,
+        "coverage": 0.4791666666666667
+      },
+      "gram6-nationality-adjective": {
+        "n": 1599,
+        "covered": 409,
+        "coverage": 0.2557848655409631
+      },
+      "gram7-past-tense": {
+        "n": 1560,
+        "covered": 1056,
+        "coverage": 0.676923076923077
+      },
+      "gram8-plural": {
+        "n": 1332,
+        "covered": 506,
+        "coverage": 0.37987987987987987
+      },
+      "gram9-plural-verbs": {
+        "n": 870,
+        "covered": 306,
+        "coverage": 0.35172413793103446
+      }
+    }
+  },
+  "mst_eligible_test_sentences": 660,
+  "wordpieces": {
+    "train": {
+      "max_wordpieces": 174,
+      "mean_wordpieces": 18.538982780612244,
+      "n_over_limit": 0,
+      "wordpieces_per_word": 1.1367449090322517,
+      "words_with_zero_wordpieces": 0
+    },
+    "dev": {
+      "max_wordpieces": 88,
+      "mean_wordpieces": 14.998500749625187,
+      "n_over_limit": 0,
+      "wordpieces_per_word": 1.1934149832988707,
+      "words_with_zero_wordpieces": 0
+    },
+    "test": {
+      "max_wordpieces": 335,
+      "mean_wordpieces": 14.694752046220511,
+      "n_over_limit": 0,
+      "wordpieces_per_word": 1.2162668366940304,
+      "words_with_zero_wordpieces": 0
+    }
+  }
+}

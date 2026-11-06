@@ -1,0 +1,45 @@
+{
+  "good": {
+    "sent_id": "reviews-025894-0002",
+    "text": "I have eaten here several times and everytime the service is slower than slow.",
+    "uuas": 1.0,
+    "missed": [],
+    "spurious": []
+  },
+  "typical": {
+    "sent_id": "answers-20111108100703AAo53QA_ans-0003",
+    "text": "Say after I finished those 2 years and I found a job.",
+    "uuas": 0.8181818181818182,
+    "missed": [
+      "Say-finished (discourse)",
+      "finished-found (conj)"
+    ],
+    "spurious": [
+      "Say-after",
+      "I-I"
+    ]
+  },
+  "poor": {
+    "sent_id": "answers-20111108102205AArwNzY_ans-0007",
+    "text": "Raleigh to Chicago, Chicago to Seoul and then Seoul to Manila.",
+    "uuas": 0.3,
+    "missed": [
+      "Raleigh-Chicago (conj)",
+      "Raleigh-Seoul (conj)",
+      "to-Chicago (case)",
+      "Chicago-Seoul (nmod)",
+      "to-Seoul (case)",
+      "and-Seoul (cc)",
+      "to-Manila (case)"
+    ],
+    "spurious": [
+      "Raleigh-to",
+      "to-to",
+      "Chicago-Chicago",
+      "Chicago-Seoul",
+      "Chicago-Seoul",
+      "to-to",
+      "and-then"
+    ]
+  }
+}

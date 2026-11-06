@@ -1,0 +1,27 @@
+{
+  "sent_ids": [
+    "answers-20111106230959AAuYQ5Q_ans-0006",
+    "answers-20111107035344AAdi9dS_ans-0003",
+    "answers-20111107082312AAPNaxb_ans-0006",
+    "answers-20111107214231AA68BMD_ans-0004",
+    "answers-20111108083559AAp6Jfq_ans-0001",
+    "email-enronsent29_02-0002",
+    "email-enronsent29_02-0006",
+    "email-enronsent29_02-0039",
+    "email-enronsent36_01-0032",
+    "newsgroup-groups.google.com_GayNews_0f9e221229ed0ee5_ENG_20050307_110600-0002",
+    "reviews-042530-0002",
+    "reviews-118679-0001",
+    "reviews-155050-0002",
+    "reviews-178726-0007",
+    "reviews-214912-0004",
+    "reviews-216281-0001",
+    "reviews-241108-0004",
+    "reviews-325330-0002",
+    "reviews-325741-0002",
+    "weblog-juancole.com_juancole_20040722101300_ENG_20040722_101300-0006"
+  ],
+  "seed": 42,
+  "n_eligible": 660,
+  "criteria": "test split; 5-40 non-PUNCT words; all non-PUNCT words (lowercased) in the train vocabulary"
+}

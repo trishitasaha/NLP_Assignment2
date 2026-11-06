@@ -1,0 +1,15 @@
+\begin{tabular}{lccccccc}
+\toprule
+ & \multicolumn{2}{c}{WordSim-353 $\rho$} & \multicolumn{3}{c}{Analogy acc.\ (\%)} & \multicolumn{2}{c}{MST UUAS (\%)} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-6}\cmidrule(lr){7-8}
+system & covered [95\% CI] & all 353 & covered & sem / syn & all & 20 sent.\ [95\% CI] & pool \\
+\midrule
+T1 PPMI-SVD (spec) & 0.104 [$-$0.03, 0.22] & 0.048 & 0.5 & 2.1 / 0.3 & 0.1 & 20.5 [16.3, 26.2] & 24.8 \\
+T1 PPMI-SVD, best variant ($p{=}0$) & 0.134 [0.00, 0.25] & 0.089 & 0.2 & 0.9 / 0.1 & 0.1 & 22.6 [17.8, 28.4] & 24.5 \\
+\textbf{T3 BERT-static, layer 8} & 0.577 [0.47, 0.66] & 0.452 & 67.7 & 74.5 / 66.6 & 19.8 & 18.4 [13.6, 26.0] & 17.9 \\
+T3 + all-but-the-top ($D{=}7$) & 0.682 [0.61, 0.74] & 0.539 & 71.0 & 79.0 / 69.7 & 20.8 & 19.7 [14.9, 26.2] & 19.6 \\
+\midrule
+T2 probe, layer 8 (contextual, supervised; reference) & -- & -- & -- & -- & -- & 81.2 [75.9, 85.9] & 82.9 \\
+linear chain / random tree & -- & -- & -- & -- & -- & 43.2 / 15.2 & 43.0 / 17.1 \\
+\bottomrule
+\end{tabular}

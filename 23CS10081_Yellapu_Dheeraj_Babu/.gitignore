@@ -1,0 +1,17 @@
+# The repository root .gitignore ignores *.npy and *.pt everywhere; keep this implementation's results and probes.
+!*.npy
+!*.pt
+# large / regenerable
+data/
+outputs/task2/features/
+outputs/task3/static/
+outputs_*/
+dist/
+__pycache__/
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb

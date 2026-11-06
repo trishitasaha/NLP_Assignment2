@@ -1,0 +1,15 @@
+\begin{tabular}{lcccc}
+\toprule
+ & \multicolumn{2}{c}{20 sampled sentences} & \multicolumn{2}{c}{robustness set} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+UUAS (\%) & A (234 edges) & B (282 edges) & A: 660 sent. & B: 1,926 sent. \\
+\midrule
+random tree & 15.2 & 13.1 & 17.1 & 14.3 \\
+linear chain & 43.2 & 35.5 & 43.0 & 40.5 \\
+\midrule T1 PPMI-SVD & 20.5 & 16.7 & 24.8 & 17.8 \\
+T3 layer 8 (A: all types; B: T1 vocab.) & 18.4 & 9.6 & 17.9 & 14.5 \\
+T3 layer 8, all types & 18.4 & 9.9 & 17.9 & 14.7 \\
+T3 + anisotropy fix (A: ABTT; B: centred) & 19.7 & 13.5 & 19.6 & 16.0 \\
+\midrule T2 probe, layer 8 (A only) & 81.2 & -- & 82.9 & -- \\
+\bottomrule
+\end{tabular}

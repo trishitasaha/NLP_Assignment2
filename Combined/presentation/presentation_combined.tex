@@ -1,0 +1,431 @@
+\documentclass[aspectratio=169,9pt,t]{beamer}
+% Common presentation (Y. D. Babu + T. Saha). Same theme as presentation/presentation.tex.
+\usetheme{Boadilla}
+\usecolortheme{default}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,tabularx,array,multirow}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc}
+\usepackage{hyperref}
+
+\definecolor{Navy}{HTML}{12304A}\definecolor{Teal}{HTML}{087E82}\definecolor{TealLight}{HTML}{E6F4F3}
+\definecolor{Gold}{HTML}{D18B23}\definecolor{GoldLight}{HTML}{FFF4DF}\definecolor{Ink}{HTML}{243447}
+\definecolor{Muted}{HTML}{627487}\definecolor{Pale}{HTML}{F3F6F9}\definecolor{Red}{HTML}{B94B48}
+\setbeamercolor{normal text}{fg=Ink,bg=white}
+\setbeamercolor{structure}{fg=Teal}
+\setbeamercolor{frametitle}{fg=Navy,bg=white}
+\setbeamercolor{block title}{fg=white,bg=Navy}
+\setbeamercolor{block body}{fg=Ink,bg=Pale}
+\setbeamercolor{block title alerted}{fg=white,bg=Gold}
+\setbeamercolor{block body alerted}{fg=Ink,bg=GoldLight}
+\setbeamercolor{block title example}{fg=white,bg=Teal}
+\setbeamercolor{block body example}{fg=Ink,bg=TealLight}
+\setbeamerfont{frametitle}{series=\bfseries,size=\large}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{itemize item}{\color{Teal}\raise0.25ex\hbox{\small$\blacktriangleright$}}
+\setbeamertemplate{frametitle}{%
+  \vskip0.35em
+  \begin{beamercolorbox}[wd=\paperwidth,ht=1.9ex,dp=0.6ex,leftskip=0.65cm,rightskip=0.4cm]{frametitle}%
+    \color{Teal}\rule{2.2pt}{2.0ex}\hspace{0.35em}\insertframetitle
+  \end{beamercolorbox}%
+  \vspace{-0.15em}\hspace{0.65cm}\color{Teal!35}\rule{\dimexpr\paperwidth-1.3cm\relax}{0.35pt}}
+\setbeamertemplate{footline}{%
+  \leavevmode\hbox{%
+  \begin{beamercolorbox}[wd=.66\paperwidth,ht=1.9ex,dp=0.6ex,leftskip=.65cm]{author in head/foot}%
+    \color{Muted}\scriptsize NLP CS60075 $\cdot$ Project 5 $\cdot$ two implementations compared
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.34\paperwidth,ht=1.9ex,dp=0.6ex,rightskip=.65cm plus1fil]{date in head/foot}%
+    \color{Muted}\scriptsize Y.\,D.\,Babu $\cdot$ T.\,Saha \hspace{1em}\insertframenumber/\inserttotalframenumber
+  \end{beamercolorbox}}\vskip0pt}
+\setbeamersize{text margin left=0.65cm,text margin right=0.65cm}
+\setlength{\leftmargini}{1.25em}
+\renewcommand{\arraystretch}{1.16}
+\graphicspath{{figures/}}
+\input{generated/numbers.tex}
+\input{generated/numbers_b.tex}
+\newcommand{\metric}[2]{\begin{beamercolorbox}[rounded=true,sep=0.6ex,wd=\linewidth]{block body example}\centering{\Large\bfseries\color{Teal}#1}\\[-0.2ex]{\scriptsize\color{Muted}#2}\end{beamercolorbox}}
+\newcommand{\hl}[1]{\textcolor{Teal}{\bfseries #1}}
+\newcommand{\warn}[1]{\textcolor{Red}{\bfseries #1}}
+\newcommand{\A}{\textcolor{Teal}{\bfseries A}}
+\newcommand{\B}{\textcolor{Gold}{\bfseries B}}
+\newcommand{\tightitem}{\setlength{\itemsep}{0.14em}\setlength{\parskip}{0pt}}
+\newcommand{\lstar}{\ensuremath{\ell^*}}
+
+\begin{document}
+
+% ------------------------------------------------------------ 1 title
+{\setbeamertemplate{footline}{}
+\setbeamertemplate{background canvas}{\color{Navy}\rule{\paperwidth}{\paperheight}}
+\begin{frame}[plain]
+  \vspace{0.6cm}
+  {\color{Teal!35}\rule{1.2cm}{3pt}}\\[0.5cm]
+  {\LARGE\bfseries\color{white}From Static to Contextual\par}
+  \vspace{0.1cm}
+  {\large\color{white!85}Distributional Semantics and What's Inside BERT\par}
+  \vspace{0.6cm}
+  {\color{white!85}\Large Two independent implementations, one set of conclusions\par}
+  \vspace{0.9cm}
+  {\color{white}Yellapu Dheeraj Babu (23CS10081) \quad $\cdot$ \quad Trishita Saha (26CS91R13)\par}
+  \vspace{0.2cm}
+  {\color{white!80}NLP CS60075 $\;|\;$ Assignment II -- Project 5 $\;|\;$ UD English EWT\par}
+  \vfill
+  {\color{white!65}\small Common presentation \hfill November 2026}
+\end{frame}}
+
+% ------------------------------------------------------------ 2 problem
+\begin{frame}{The problem}
+\begin{columns}[T,onlytextwidth]
+  \column{0.32\textwidth}
+  \begin{block}{Task 1 -- baseline}
+    PPMI + SVD vectors from EWT train: one fixed vector per word.
+  \end{block}
+  \column{0.32\textwidth}
+  \begin{block}{Task 2 -- reproduction}
+    Hewitt \& Manning structural probe on frozen \texttt{bert-base-uncased}, layers 1--12 $\Rightarrow$ best syntax layer \lstar.
+  \end{block}
+  \column{0.32\textwidth}
+  \begin{block}{Task 3 -- combine}
+    Average layer-\lstar{} vectors over all contexts $\Rightarrow$ static vectors; compare with Task 1.
+  \end{block}
+\end{columns}
+\vspace{0.4em}
+\begin{exampleblock}{Evaluated on}
+\textbf{meaning}: WordSim-353 Spearman, Google analogies \qquad \textbf{syntax}: MST over word distances vs.\ the gold tree (UUAS)
+\end{exampleblock}
+\vspace{0.3em}
+\begin{alertblock}{Two questions}
+(1) Does pooling from the syntax layer give better vectors -- and do meaning and syntax agree?\\
+(2) Because we implemented everything twice: \textbf{which conclusions survive a change of implementation?}
+\end{alertblock}
+\end{frame}
+
+% ------------------------------------------------------------ 3 implementations
+\begin{frame}{Two implementations: what is shared, what differs}
+\footnotesize
+\begin{columns}[T,onlytextwidth]
+\column{0.30\textwidth}
+\begin{block}{Shared}
+\begin{itemize}\tightitem
+\item EWT splits: 12,544 / 2,001 / 2,077 sentences
+\item WS-353 + Google analogies (gensim copies)
+\item frozen \texttt{bert-base-uncased}, word = mean of pieces
+\item paper probes and L1 losses, best-dev checkpoint
+\item \lstar{} chosen on dev
+\end{itemize}
+\end{block}
+\column{0.67\textwidth}
+\begin{tabular}{@{}lll@{}}
+\toprule
+ & \A{} (Y.\,D.\,Babu) & \B{} (T.\,Saha) \\
+\midrule
+T1 vocabulary & all 16,654 types & 8,865 types (count $\ge$2) \\
+WS ``all 353'' & OOV pair $\to$ median sim. & OOV pair $\to$ 0 \\
+20-sentence MST & in-vocab, punctuation excluded & any words, punctuation included \\
+larger MST set & 660 eligible sentences & 1,926 test sentences \\
+\textbf{probe lr} & \textbf{$\times$0.1 on dev plateau (paper)} & \textbf{constant $10^{-3}$} \\
+T3 vocabulary & all types & T1's 8,865 types (+ all types) \\
+anisotropy fix & all-but-the-top ($D{=}7$) & mean-centring, + PCA-100 \\
+uncertainty & bootstrap CIs, paired tests & micro/macro, full test split \\
+\bottomrule
+\end{tabular}
+\end{columns}
+\end{frame}
+
+% ------------------------------------------------------------ 4 code
+\begin{frame}{Code organisation of the two implementations}
+\begin{columns}[T,onlytextwidth]
+\column{0.49\textwidth}
+\begin{block}{\A: \texttt{23CS10081\_Yellapu\_Dheeraj\_Babu/code/}}
+\scriptsize
+\begin{tabular}{@{}ll@{}}
+\texttt{common/} & data, MST, stats, shared eval \\
+\texttt{task1/build\_ppmi\_svd.py} & co-occurrence $\to$ PPMI $\to$ SVD \\
+\texttt{task2/extract\_bert.py} & 13-layer feature cache \\
+\texttt{task2/train\_probes.py} & 78 probes, lr decay \\
+\texttt{task3/pool\_static.py} & mean per word type \\
+\texttt{task3/evaluate\_task3.py} & same eval + paired tests \\
+\texttt{run\_all.py} + Colab & one command \\
+\end{tabular}
+\end{block}
+\column{0.49\textwidth}
+\begin{block}{\B: \texttt{Codes/} + \texttt{results/}}
+\scriptsize
+\begin{tabular}{@{}ll@{}}
+\texttt{common.py} & EWT \texttt{.conllu}, benchmarks, MST \\
+\texttt{Task1.py} & co-occurrence $\to$ PPMI $\to$ \texttt{svds} \\
+\texttt{Task2.py} & features, \texttt{probe\_loss}, \texttt{train\_probe} \\
+ & (layers trained in chunks) \\
+\texttt{Task3.py} & static vectors, centring/PCA, sweep \\
+\texttt{results/} & JSON/CSV outputs, figures \\
+\end{tabular}
+\end{block}
+\end{columns}
+\vspace{0.3em}
+\begin{exampleblock}{Same repository, clearly separated}
+\footnotesize \texttt{github.com/trishitasaha/NLP\_Assignment2}: \B's work at the root (\texttt{Codes/}, \texttt{results/}), \A's work in its own folder, the common report and slides in \texttt{Combined/}.
+\end{exampleblock}
+\end{frame}
+
+% ------------------------------------------------------------ 5 cross-check
+\begin{frame}{Cross-check: same settings $\Rightarrow$ same numbers}
+\begin{columns}[T,onlytextwidth]
+\column{0.62\textwidth}
+\scriptsize
+\begin{tabular}{@{}lcc@{}}
+\toprule
+quantity & \A{} in \B's setting & \B{} reported \\
+\midrule
+types with count $\ge$2 & 8,865 & 8,865 \\
+analogy questions, all words count $\ge$2 & 3,406 & 3,406 \\
+T3 WS-353 $\rho$ on those 203 pairs & \hl{\XTThreeSub} & \hl{\BTSameWS} \\
+T3 WS-353 $\rho$, all 353, missing $=0$ & \hl{\XTThreeAllZero} & \hl{0.288} \\
+T3 WS-353 $\rho$, 248 covered pairs & \TThreeWSCov & \BTAllWS \\
+T3 analogy, 5,727 covered / all & \TThreeANCov{} / \TThreeANFull\% & \BTAllAN{} / 19.8\% \\
+\midrule
+T1 WS-353 $\rho$ on the 203 pairs & \XTOneSub & \BWSCov \\
+\bottomrule
+\end{tabular}
+\column{0.35\textwidth}
+\begin{exampleblock}{Reading}
+\begin{itemize}\tightitem
+\item The two Task 3 pipelines are \hl{equivalent}: identical to three decimals.
+\item Task 1 differs only because \B{} drops words seen once before the SVD.
+\item Remaining differences are \emph{settings}, not bugs.
+\end{itemize}
+\end{exampleblock}
+\end{columns}
+\end{frame}
+
+% ------------------------------------------------------------ 6 T1
+\begin{frame}{Task 1: both find weak, data-limited vectors}
+\begin{columns}[T,onlytextwidth]
+\column{0.58\textwidth}
+\footnotesize
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Task 1 PPMI-SVD & \A & \B \\
+\midrule
+WS-353 $\rho$, covered pairs & \TOneWSCov{} (248) & \BWSCov{} (203) \\
+WS-353 $\rho$, all 353 & \TOneWSFull{} (median) & \BWSAllZero{} (zero) \\
+analogy acc., covered & \TOneANCov\% & \BANCov\% \\
+MST UUAS, 20 sentences & \TOneMST\% & \BMSTTwenty\% \\
+\quad random / chain & \RandomMST{} / \ChainMST & \BRandTwenty{} / \BChainTwenty \\
+MST UUAS, larger set & \TOnePool\% & \BMSTFull\% \\
+\bottomrule
+\end{tabular}
+\column{0.39\textwidth}
+\begin{block}{Agreement}
+\begin{itemize}\tightitem
+\item $\rho$ near 0 on all 353 pairs; analogies $<$1\%
+\item MST: above random, below the linear chain
+\item cause = 200k words (\A: $\rho$ \TOneWSFreqTwenty{} on frequent pairs)
+\end{itemize}
+\end{block}
+\begin{alertblock}{Why B's covered $\rho$ is higher}
+Its 203 pairs exclude rare words: \A's vectors score \XTOneSub{} on them.
+\end{alertblock}
+\end{columns}
+\end{frame}
+
+% ------------------------------------------------------------ 7 T2
+\begin{frame}{Task 2: same best layer, different absolute UUAS}
+\begin{columns}[T,onlytextwidth]
+\column{0.66\textwidth}
+\centering\includegraphics[width=\linewidth]{fig_layers_cmp.pdf}
+\column{0.32\textwidth}
+\metric{\lstar = 8}{in both implementations}
+\vspace{0.2em}
+\footnotesize
+\begin{tabular}{@{}lcc@{}}
+\toprule
+ & UUAS & NSpr \\
+\midrule
+paper (PTB) & 79.8 & 0.87 \\
+\A, lr decay & \TtwoTestUuas & \TtwoTestNspr \\
+\B, constant lr & \BUUASnp & \BNSpr \\
+\A, constant lr & \ALitUUASonetwoeight & \LitNspr \\
+\bottomrule
+\end{tabular}\\[2pt]
+{\scriptsize UUAS with punctuation excluded.}
+\end{columns}
+\end{frame}
+
+% ------------------------------------------------------------ 8 schedule
+\begin{frame}{Why the UUAS differs: the learning-rate schedule}
+\begin{columns}[T,onlytextwidth]
+\column{0.50\textwidth}
+\begin{block}{Evidence}
+\begin{itemize}\tightitem
+\item \A's control with \B's schedule (constant lr) drops to \ALitUUASonetwoeight\% (last epoch); \B{} keeps the best dev epoch: \BUUASnp\%.
+\item \B: best dev epoch of $k{=}128$ probes is mostly epoch 1. \A's control: dev minimum at epoch \LitMinEpoch, then it oscillates for 29 epochs.
+\item \A's control: \emph{training} loss also stays high (0.62 vs.\ 0.42 with decay) $\Rightarrow$ \hl{non-convergence, not over-fitting}.
+\end{itemize}
+\end{block}
+\column{0.47\textwidth}
+\begin{exampleblock}{Mechanism}
+L1 loss: the gradient does not shrink near the optimum, so Adam keeps taking steps of size $\approx$ lr and circles the minimum. The paper's $\times0.1$ decay lets it settle.
+\end{exampleblock}
+\begin{alertblock}{It also flips the best rank}
+\B{} (constant lr): $k{=}32$ best. \A{} (decay): $k{=}128 \ge 64 > 32$ (\RankAUUAS{} / \RankBUUAS{} / \RankCUUAS\%), as in the paper.
+\end{alertblock}
+\end{columns}
+\end{frame}
+
+% ------------------------------------------------------------ 9 T3 meaning
+\begin{frame}{Task 3, meaning: both find a large gain}
+\begin{columns}[T,onlytextwidth]
+\column{0.60\textwidth}
+\footnotesize
+\begin{tabular}{@{}llcc@{}}
+\toprule
+ & & WS $\rho$ (203 pairs) & analogy, covered \\
+\midrule
+\A & T1 PPMI-SVD & \XTOneSub & \TOneANCov\% \\
+\B & T1 PPMI-SVD & \BWSCov & \BANCov\% \\
+\midrule
+\A & T3 BERT-static, layer 8 & \hl{\XTThreeSub} & \hl{\TThreeANCov\%} \\
+\B & T3 BERT-static, layer 8 & \hl{\BTSameWS} & \hl{\BTSameAN\%} \\
+\midrule
+\A & T3 + all-but-the-top & \XTThreeASub & \TThreeAANCov\% \\
+\B & T3 mean-centred & \BTCenWS & \BTCenAN\% \\
+\bottomrule
+\end{tabular}\\[3pt]
+{\scriptsize \B's analogy questions and candidates use its 8,865-word vocabulary, which raises covered accuracy.}
+\column{0.37\textwidth}
+\begin{exampleblock}{Agreement}
+\begin{itemize}\tightitem
+\item WS $\rho$ $\approx$0.18 $\to$ 0.65; analogies $<$1\% $\to$ 68--77\%
+\item \A's paired tests: $\Delta\rho$ = \PtWSDiff{} \PtWSCI; \PtANOnlyA{} vs.\ \PtANOnlyB{} questions
+\item removing the shared direction helps in both (anisotropy)
+\item not data-matched: BERT was pre-trained on $\approx$3.3B words
+\end{itemize}
+\end{exampleblock}
+\end{columns}
+\end{frame}
+
+% ------------------------------------------------------------ 10 T3 trees
+\begin{frame}{Task 3, trees: both find no improvement}
+\begin{columns}[T,onlytextwidth]
+\column{0.56\textwidth}
+\footnotesize
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+ & \multicolumn{2}{c}{20 sentences} & \multicolumn{2}{c}{larger set} \\
+UUAS (\%) & \A & \B & \A{} (660) & \B{} (1,926) \\
+\midrule
+random tree & \RandomMST & \BRandTwenty & \RandomPool & \BRandFull \\
+linear chain & \ChainMST & \BChainTwenty & \ChainPool & \BChainFull \\
+\midrule
+T1 PPMI-SVD & \TOneMST & \BMSTTwenty & \TOnePool & \BMSTFull \\
+T3 BERT-static & \warn{\TThreeMST} & \warn{\BTSameMST} & \warn{\TThreePool} & \warn{\BTSameFull} \\
+T3 + anisotropy fix & \TThreeAMST & \BTCenMST & \TThreeAPool & \BTCenFull \\
+\midrule
+T2 probe (\A) & \TTwoRefMST & -- & \TTwoRefPool & -- \\
+\bottomrule
+\end{tabular}
+\column{0.41\textwidth}
+\begin{alertblock}{Agreement}
+T3 $<$ T1 in both implementations, on both sets -- close to a random tree.
+\end{alertblock}
+\begin{block}{Significance (\A)}
+20 sentences: $\Delta$ = \PtMSTDiff\,pt, \emph{n.s.}\\
+660 sentences: $\Delta$ = \PtPoolDiff\,pt \PtPoolCI
+\end{block}
+\begin{exampleblock}{So}
+\textbf{meaning and syntax disagree} -- in both.
+\end{exampleblock}
+\end{columns}
+\end{frame}
+
+% ------------------------------------------------------------ 11 why
+\begin{frame}{Why meaning and syntax disagree: \B's reasons, \A's measurements}
+\footnotesize
+\begin{tabular}{@{}p{0.34\textwidth}p{0.60\textwidth}@{}}
+\toprule
+\B: explanation & \A: measurement \\
+\midrule
+Pooling removes the context-dependent signal &
+ladder on 660 sentences: static \TThreePool\% $\to$ through probe $B$ \LadProjPool\% $\to$ contextual cosine \LadCtxPool\% $\to$ probe \hl{\TTwoRefPool\%} \\
+The probe learns a projection; the MST uses raw cosine &
+even contextual vectors with raw cosine (\LadCtxPool\%) stay below the linear chain (\ChainPool\%) \\
+Edges join semantically dissimilar words; PPMI captures co-occurrence &
+T3 neighbours share the POS \NNSameTThree{} (T1 \NNSameTOne) = substitutes; T1 neighbours co-occur \NNCoocTOne{} (T3 \NNCoocTThree) = partners \\
+ & does closer mean connected? edge AUC: T3 \warn{\AucTThree} $\cdot$ T1 \AucTOne{} $\cdot$ contextual \AucCtx{} $\cdot$ probe \hl{\AucProbe} \\
+OOV words inject arbitrary distances (\B's sample: \BNoVecTwenty\% of words) &
+\A's in-vocabulary sample avoids this, and T3 is still below T1 \\
+\bottomrule
+\end{tabular}
+\vspace{0.4em}
+\begin{exampleblock}{In one sentence}
+Benchmarks reward similarity between word \emph{types} (substitutes); trees need relations between \emph{tokens} in context (partners) -- exactly what pooling removes.
+\end{exampleblock}
+\end{frame}
+
+% ------------------------------------------------------------ 12 robust vs sensitive
+\begin{frame}{What survives a change of implementation?}
+\begin{columns}[T,onlytextwidth]
+\column{0.49\textwidth}
+\begin{exampleblock}{Robust: both agree}
+\begin{itemize}\tightitem
+\item \lstar{} = 8, mid-layer peak, decline to layer 12
+\item T3 $\gg$ T1 on WordSim-353 and analogies
+\item T3 $<$ T1 on the MST check, near random
+\item static semantics peaks at layers 1--2, not \lstar
+\item centring / all-but-the-top helps T3
+\item T3 numbers identical once settings match
+\end{itemize}
+\end{exampleblock}
+\column{0.49\textwidth}
+\begin{alertblock}{Implementation-sensitive}
+\begin{itemize}\tightitem
+\item probe UUAS: 62--80 (learning-rate schedule)
+\item best probe rank: 32 vs.\ 128 (same cause)
+\item T1 $\rho$: 0.10 vs.\ 0.17--0.19 (pair subset, cut-off)
+\item MST levels: up to 8\,pt (sentence sample, punctuation)
+\item ``all 353'' $\rho$: imputation rule
+\end{itemize}
+\end{alertblock}
+\vspace{0.2em}
+{\footnotesize Lesson: report these choices explicitly -- some move numbers more than the effects being studied.}
+\end{columns}
+\end{frame}
+
+% ------------------------------------------------------------ 13 conclusions
+\begin{frame}{Conclusions}
+\begin{enumerate}\tightitem
+\item \textbf{T1:} classical vectors from 200k words are weak and data-limited (both).
+\item \textbf{T2:} BERT encodes dependency trees in a low-rank subspace of its middle layers; \lstar{} = 8 (both). With the paper's schedule the probe reproduces the paper: \TtwoTestUuas\% vs.\ 79.8\%.
+\item \textbf{T3:} pooling the syntax layer gives \hl{much better word-meaning vectors} but \warn{worse tree structure} (both).
+\item \textbf{The two evaluations disagree} because they measure different things: type similarity vs.\ token relations in context.
+\item \textbf{Two implementations} turned a single result into a robust one, and exposed the choices that matter (lr schedule, evaluation subsets).
+\end{enumerate}
+\vspace{0.5em}
+\begin{beamercolorbox}[rounded=true,sep=1ex,wd=\linewidth]{block body example}
+\centering\large\bfseries\color{Navy} A good static meaning vector is not automatically a good syntactic representation.
+\end{beamercolorbox}
+\vspace{0.3em}
+\centering\Large\color{Teal}\textbf{Thank you}\quad\textcolor{Muted}{\normalsize Questions?}
+\end{frame}
+
+% ------------------------------------------------------------ 14 references
+\begin{frame}{References}
+\footnotesize
+\begin{itemize}\setlength{\itemsep}{0.4em}
+\item J. Hewitt, C. D. Manning (2019). A structural probe for finding syntax in word representations. NAACL.
+\item O. Levy, Y. Goldberg (2014). Neural word embedding as implicit matrix factorization. NeurIPS.
+\item R. Bommasani, K. Davis, C. Cardie (2020). Interpreting pretrained contextualized representations via reductions to static embeddings. ACL.
+\item J. Devlin et al.\ (2019). BERT: pre-training of deep bidirectional transformers for language understanding. NAACL.
+\item J. Mu, P. Viswanath (2018). All-but-the-top: simple and effective postprocessing for word representations. ICLR.
+\item K. Ethayarajh (2019). How contextual are contextualized word representations? EMNLP.
+\item M. Sahlgren (2006). The Word-Space Model. PhD thesis, Stockholm University.
+\item M.-C. de Marneffe et al.\ (2021). Universal Dependencies. Computational Linguistics 47(2).
+\end{itemize}
+\vspace{0.4em}
+{\scriptsize Full details: common report (\texttt{Combined/report\_combined.pdf}); individual reports in each author's folder.}
+\end{frame}
+\end{document}

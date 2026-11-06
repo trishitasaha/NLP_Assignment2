@@ -1,0 +1,10 @@
+\begin{tabular}{lcccccc}
+\toprule
+system & $\ell^*$ & $k$ & UUAS & DSpr & NSpr & Root\% \\
+\midrule
+Paper: BERT-base (PTB WSJ, cased) & 7 (0-idx.) & full & 79.8 & 0.85 & 0.87 & 88.0 \\
+A: paper schedule ($\times$0.1 lr decay, best dev) & 8 & 128 & 79.5 & 0.822 & 0.859 & 87.5 \\
+A: constant lr, last epoch (control) & 8 & 128 & 62.0 & 0.760 & 0.803 & 58.6 \\
+B: constant lr, best dev epoch & 8 & 32 & 68.9 & 0.784$^\dagger$ & 0.802$^\ddagger$ & 72.4 \\
+\bottomrule
+\end{tabular}

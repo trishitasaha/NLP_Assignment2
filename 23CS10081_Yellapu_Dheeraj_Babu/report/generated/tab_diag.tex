@@ -1,0 +1,15 @@
+\begin{tabular}{lcccc}
+\toprule
+ & T1 PPMI-SVD & T3 layer 8 & T3 + ABTT & random / gold \\
+\midrule
+NN with same majority UPOS (top-10) & 0.326 & 0.740 & 0.710 & 0.223 \\
+NN that co-occur within $\pm5$ in train & 0.557 & 0.162 & 0.156 & 0.067 \\
+hubness: skewness of $N_{10}$ & 2.10 & 1.45 & 0.57 & -- \\
+function words among top-50 hubs & 0.10 & 0.12 & 0.02 & -- \\
+\midrule
+edge AUC (gold edge closer than non-edge) & 0.54 & 0.46 & 0.44 & 0.50 \\
+MST: mean degree of function-word tokens & 1.84 & 2.29 & 2.04 & 1.05 (gold) \\
+MST: mean max.\ degree per sentence & 3.75 & 5.46 & 3.62 & 4.53 (gold) \\
+MST: edges joining same-UPOS words & 0.21 & 0.25 & 0.29 & 0.13 (gold) \\
+\bottomrule
+\end{tabular}

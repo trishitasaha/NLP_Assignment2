@@ -1,0 +1,18 @@
+\begin{tabular}{lccl}
+\toprule
+quantity & A (recomputed in B's setting) & B (reported) & \\
+\midrule
+train / dev / test sentences & 12,544 / 2,001 / 2,077 & 12,544 / 2,001 / 2,077 & identical \\
+train tokens; lowercased types & 204,578; 16,654 & 204,578; 16,654 & identical \\
+types with count $\ge$2 (B's T1 vocabulary) & 8,865 & 8,865 & identical \\
+analogy questions, all words count $\ge$2 & 3,406 & 3,406 & identical \\
+T3 layer 8, WS-353 $\rho$ on those 203 pairs & 0.648 & 0.648 & identical \\
+T3 layer 8 (all types), WS $\rho$, 248 covered pairs & 0.577 & 0.577 & identical \\
+T3 layer 8 (all types), WS $\rho$, all 353, missing $=0$ & 0.288 & 0.288 & identical \\
+T3 layer 8 (all types), analogy, 5,727 covered & 67.7 & 67.7 & identical \\
+\quad semantic / syntactic & 74.5 / 66.6 & 74.5 / 66.6 & identical \\
+T3 layer 8 (all types), analogy, all 19,544 & 19.8 & 19.8 & identical \\
+T1, WS $\rho$ on the 203 pairs & 0.171$^a$ & 0.189$^b$ & vocabulary cut-off \\
+T1, WS $\rho$, all 353, missing $=0$ & 0.060$^a$ & 0.024$^b$ & vocabulary cut-off \\
+\bottomrule
+\end{tabular}

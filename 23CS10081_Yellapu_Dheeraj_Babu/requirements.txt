@@ -1,0 +1,13 @@
+# Project 5 (UD English EWT) - Python 3.12.16
+# Exact versions from the development env `nlp5` (frozen 2026-11-06 after Phase 0).
+# torch was installed from PyPI as 2.15.0+cu132 (CUDA 13.2 build).
+numpy==2.5.4
+scipy==1.18.1
+scikit-learn==1.9.1
+pandas==3.1.1
+matplotlib==3.11.2
+tqdm==4.70.1
+torch==2.15.0
+transformers==5.22.1
+datasets==5.1.0          # the UD repo is Parquet-only; script loaders were removed in datasets 4.0
+huggingface_hub==2.4.0

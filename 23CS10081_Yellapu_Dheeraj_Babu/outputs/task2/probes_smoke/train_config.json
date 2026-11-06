@@ -1,0 +1,17 @@
+{
+ "layers": [
+  7
+ ],
+ "ranks": [
+  64
+ ],
+ "probes": [
+  "distance",
+  "depth"
+ ],
+ "epochs": 1,
+ "batch_size": 20,
+ "lr": 0.001,
+ "tag": "smoke",
+ "max_train_sents": null
+}

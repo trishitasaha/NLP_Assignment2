@@ -1,0 +1,249 @@
+key,system,relation,recovered,total,recall
+T1,T1 PPMI-SVD (spec),nsubj,193,849,0.22732626619552415
+T1,T1 PPMI-SVD (spec),det,93,658,0.1413373860182371
+T1,T1 PPMI-SVD (spec),case,72,606,0.1188118811881188
+T1,T1 PPMI-SVD (spec),advmod,204,573,0.35602094240837695
+T1,T1 PPMI-SVD (spec),obj,138,448,0.3080357142857143
+T1,T1 PPMI-SVD (spec),obl,105,398,0.2638190954773869
+T1,T1 PPMI-SVD (spec),amod,154,384,0.4010416666666667
+T1,T1 PPMI-SVD (spec),aux,94,375,0.25066666666666665
+T1,T1 PPMI-SVD (spec),nmod,96,371,0.2587601078167116
+T1,T1 PPMI-SVD (spec),conj,101,295,0.3423728813559322
+T1,T1 PPMI-SVD (spec),mark,38,288,0.13194444444444445
+T1,T1 PPMI-SVD (spec),cc,15,277,0.05415162454873646
+T1,T1 PPMI-SVD (spec),compound,91,267,0.3408239700374532
+T1,T1 PPMI-SVD (spec),cop,14,249,0.05622489959839357
+T1,T1 PPMI-SVD (spec),xcomp,51,154,0.33116883116883117
+T1,T1 PPMI-SVD (spec),acl,40,134,0.29850746268656714
+T1,T1 PPMI-SVD (spec),advcl,39,129,0.3023255813953488
+T1,T1 PPMI-SVD (spec),ccomp,40,99,0.40404040404040403
+T1,T1 PPMI-SVD (spec),parataxis,15,67,0.22388059701492538
+T1,T1 PPMI-SVD (spec),discourse,20,57,0.3508771929824561
+T1,T1 PPMI-SVD (spec),nummod,18,44,0.4090909090909091
+T1,T1 PPMI-SVD (spec),iobj,17,40,0.425
+T1,T1 PPMI-SVD (spec),expl,11,33,0.3333333333333333
+T1,T1 PPMI-SVD (spec),flat,19,29,0.6551724137931034
+T1,T1 PPMI-SVD (spec),fixed,16,28,0.5714285714285714
+T1,T1 PPMI-SVD (spec),appos,5,9,0.5555555555555556
+T1,T1 PPMI-SVD (spec),csubj,2,7,0.2857142857142857
+T1,T1 PPMI-SVD (spec),vocative,1,6,0.16666666666666666
+T1,T1 PPMI-SVD (spec),goeswith,0,2,0.0
+T1,T1 PPMI-SVD (spec),list,1,2,0.5
+T1,T1 PPMI-SVD (spec),reparandum,0,1,0.0
+T1best,T1 PPMI-SVD (p0),nsubj,207,849,0.24381625441696114
+T1best,T1 PPMI-SVD (p0),det,108,658,0.1641337386018237
+T1best,T1 PPMI-SVD (p0),case,123,606,0.20297029702970298
+T1best,T1 PPMI-SVD (p0),advmod,180,573,0.31413612565445026
+T1best,T1 PPMI-SVD (p0),obj,123,448,0.27455357142857145
+T1best,T1 PPMI-SVD (p0),obl,86,398,0.21608040201005024
+T1best,T1 PPMI-SVD (p0),amod,149,384,0.3880208333333333
+T1best,T1 PPMI-SVD (p0),aux,94,375,0.25066666666666665
+T1best,T1 PPMI-SVD (p0),nmod,92,371,0.24797843665768193
+T1best,T1 PPMI-SVD (p0),conj,78,295,0.26440677966101694
+T1best,T1 PPMI-SVD (p0),mark,47,288,0.16319444444444445
+T1best,T1 PPMI-SVD (p0),cc,26,277,0.09386281588447654
+T1best,T1 PPMI-SVD (p0),compound,89,267,0.3333333333333333
+T1best,T1 PPMI-SVD (p0),cop,35,249,0.14056224899598393
+T1best,T1 PPMI-SVD (p0),xcomp,39,154,0.2532467532467532
+T1best,T1 PPMI-SVD (p0),acl,32,134,0.23880597014925373
+T1best,T1 PPMI-SVD (p0),advcl,27,129,0.20930232558139536
+T1best,T1 PPMI-SVD (p0),ccomp,25,99,0.25252525252525254
+T1best,T1 PPMI-SVD (p0),parataxis,13,67,0.19402985074626866
+T1best,T1 PPMI-SVD (p0),discourse,17,57,0.2982456140350877
+T1best,T1 PPMI-SVD (p0),nummod,20,44,0.45454545454545453
+T1best,T1 PPMI-SVD (p0),iobj,16,40,0.4
+T1best,T1 PPMI-SVD (p0),expl,13,33,0.3939393939393939
+T1best,T1 PPMI-SVD (p0),flat,18,29,0.6206896551724138
+T1best,T1 PPMI-SVD (p0),fixed,19,28,0.6785714285714286
+T1best,T1 PPMI-SVD (p0),appos,5,9,0.5555555555555556
+T1best,T1 PPMI-SVD (p0),csubj,1,7,0.14285714285714285
+T1best,T1 PPMI-SVD (p0),vocative,1,6,0.16666666666666666
+T1best,T1 PPMI-SVD (p0),goeswith,0,2,0.0
+T1best,T1 PPMI-SVD (p0),list,1,2,0.5
+T1best,T1 PPMI-SVD (p0),reparandum,0,1,0.0
+T3,T3 BERT-static L8,nsubj,79,849,0.09305064782096584
+T3,T3 BERT-static L8,det,197,658,0.2993920972644377
+T3,T3 BERT-static L8,case,94,606,0.1551155115511551
+T3,T3 BERT-static L8,advmod,81,573,0.14136125654450263
+T3,T3 BERT-static L8,obj,65,448,0.14508928571428573
+T3,T3 BERT-static L8,obl,36,398,0.09045226130653267
+T3,T3 BERT-static L8,amod,60,384,0.15625
+T3,T3 BERT-static L8,aux,72,375,0.192
+T3,T3 BERT-static L8,nmod,40,371,0.1078167115902965
+T3,T3 BERT-static L8,conj,129,295,0.43728813559322033
+T3,T3 BERT-static L8,mark,100,288,0.3472222222222222
+T3,T3 BERT-static L8,cc,20,277,0.07220216606498195
+T3,T3 BERT-static L8,compound,72,267,0.2696629213483146
+T3,T3 BERT-static L8,cop,22,249,0.08835341365461848
+T3,T3 BERT-static L8,xcomp,26,154,0.16883116883116883
+T3,T3 BERT-static L8,acl,17,134,0.12686567164179105
+T3,T3 BERT-static L8,advcl,35,129,0.2713178294573643
+T3,T3 BERT-static L8,ccomp,16,99,0.16161616161616163
+T3,T3 BERT-static L8,parataxis,10,67,0.14925373134328357
+T3,T3 BERT-static L8,discourse,10,57,0.17543859649122806
+T3,T3 BERT-static L8,nummod,7,44,0.1590909090909091
+T3,T3 BERT-static L8,iobj,1,40,0.025
+T3,T3 BERT-static L8,expl,5,33,0.15151515151515152
+T3,T3 BERT-static L8,flat,16,29,0.5517241379310345
+T3,T3 BERT-static L8,fixed,15,28,0.5357142857142857
+T3,T3 BERT-static L8,appos,1,9,0.1111111111111111
+T3,T3 BERT-static L8,csubj,2,7,0.2857142857142857
+T3,T3 BERT-static L8,vocative,0,6,0.0
+T3,T3 BERT-static L8,goeswith,1,2,0.5
+T3,T3 BERT-static L8,list,0,2,0.0
+T3,T3 BERT-static L8,reparandum,0,1,0.0
+T3abtt,T3 BERT-static L8 + ABTT,nsubj,126,849,0.14840989399293286
+T3abtt,T3 BERT-static L8 + ABTT,det,59,658,0.08966565349544073
+T3abtt,T3 BERT-static L8 + ABTT,case,70,606,0.11551155115511551
+T3abtt,T3 BERT-static L8 + ABTT,advmod,128,573,0.22338568935427575
+T3abtt,T3 BERT-static L8 + ABTT,obj,87,448,0.19419642857142858
+T3abtt,T3 BERT-static L8 + ABTT,obl,80,398,0.20100502512562815
+T3abtt,T3 BERT-static L8 + ABTT,amod,122,384,0.3177083333333333
+T3abtt,T3 BERT-static L8 + ABTT,aux,84,375,0.224
+T3abtt,T3 BERT-static L8 + ABTT,nmod,75,371,0.20215633423180593
+T3abtt,T3 BERT-static L8 + ABTT,conj,143,295,0.4847457627118644
+T3abtt,T3 BERT-static L8 + ABTT,mark,45,288,0.15625
+T3abtt,T3 BERT-static L8 + ABTT,cc,10,277,0.036101083032490974
+T3abtt,T3 BERT-static L8 + ABTT,compound,87,267,0.3258426966292135
+T3abtt,T3 BERT-static L8 + ABTT,cop,10,249,0.040160642570281124
+T3abtt,T3 BERT-static L8 + ABTT,xcomp,40,154,0.2597402597402597
+T3abtt,T3 BERT-static L8 + ABTT,acl,29,134,0.21641791044776118
+T3abtt,T3 BERT-static L8 + ABTT,advcl,34,129,0.26356589147286824
+T3abtt,T3 BERT-static L8 + ABTT,ccomp,28,99,0.2828282828282828
+T3abtt,T3 BERT-static L8 + ABTT,parataxis,12,67,0.1791044776119403
+T3abtt,T3 BERT-static L8 + ABTT,discourse,20,57,0.3508771929824561
+T3abtt,T3 BERT-static L8 + ABTT,nummod,14,44,0.3181818181818182
+T3abtt,T3 BERT-static L8 + ABTT,iobj,4,40,0.1
+T3abtt,T3 BERT-static L8 + ABTT,expl,8,33,0.24242424242424243
+T3abtt,T3 BERT-static L8 + ABTT,flat,18,29,0.6206896551724138
+T3abtt,T3 BERT-static L8 + ABTT,fixed,11,28,0.39285714285714285
+T3abtt,T3 BERT-static L8 + ABTT,appos,2,9,0.2222222222222222
+T3abtt,T3 BERT-static L8 + ABTT,csubj,2,7,0.2857142857142857
+T3abtt,T3 BERT-static L8 + ABTT,vocative,0,6,0.0
+T3abtt,T3 BERT-static L8 + ABTT,goeswith,0,2,0.0
+T3abtt,T3 BERT-static L8 + ABTT,list,1,2,0.5
+T3abtt,T3 BERT-static L8 + ABTT,reparandum,0,1,0.0
+concat,concat [T1 ; T3] (L2-normalised),nsubj,171,849,0.20141342756183744
+concat,concat [T1 ; T3] (L2-normalised),det,117,658,0.1778115501519757
+concat,concat [T1 ; T3] (L2-normalised),case,78,606,0.12871287128712872
+concat,concat [T1 ; T3] (L2-normalised),advmod,173,573,0.3019197207678883
+concat,concat [T1 ; T3] (L2-normalised),obj,120,448,0.26785714285714285
+concat,concat [T1 ; T3] (L2-normalised),obl,93,398,0.23366834170854273
+concat,concat [T1 ; T3] (L2-normalised),amod,142,384,0.3697916666666667
+concat,concat [T1 ; T3] (L2-normalised),aux,106,375,0.2826666666666667
+concat,concat [T1 ; T3] (L2-normalised),nmod,88,371,0.2371967654986523
+concat,concat [T1 ; T3] (L2-normalised),conj,129,295,0.43728813559322033
+concat,concat [T1 ; T3] (L2-normalised),mark,83,288,0.2881944444444444
+concat,concat [T1 ; T3] (L2-normalised),cc,13,277,0.04693140794223827
+concat,concat [T1 ; T3] (L2-normalised),compound,110,267,0.41198501872659177
+concat,concat [T1 ; T3] (L2-normalised),cop,7,249,0.028112449799196786
+concat,concat [T1 ; T3] (L2-normalised),xcomp,56,154,0.36363636363636365
+concat,concat [T1 ; T3] (L2-normalised),acl,35,134,0.26119402985074625
+concat,concat [T1 ; T3] (L2-normalised),advcl,43,129,0.3333333333333333
+concat,concat [T1 ; T3] (L2-normalised),ccomp,37,99,0.37373737373737376
+concat,concat [T1 ; T3] (L2-normalised),parataxis,18,67,0.26865671641791045
+concat,concat [T1 ; T3] (L2-normalised),discourse,21,57,0.3684210526315789
+concat,concat [T1 ; T3] (L2-normalised),nummod,19,44,0.4318181818181818
+concat,concat [T1 ; T3] (L2-normalised),iobj,14,40,0.35
+concat,concat [T1 ; T3] (L2-normalised),expl,12,33,0.36363636363636365
+concat,concat [T1 ; T3] (L2-normalised),flat,18,29,0.6206896551724138
+concat,concat [T1 ; T3] (L2-normalised),fixed,16,28,0.5714285714285714
+concat,concat [T1 ; T3] (L2-normalised),appos,4,9,0.4444444444444444
+concat,concat [T1 ; T3] (L2-normalised),csubj,2,7,0.2857142857142857
+concat,concat [T1 ; T3] (L2-normalised),vocative,1,6,0.16666666666666666
+concat,concat [T1 ; T3] (L2-normalised),goeswith,0,2,0.0
+concat,concat [T1 ; T3] (L2-normalised),list,1,2,0.5
+concat,concat [T1 ; T3] (L2-normalised),reparandum,0,1,0.0
+T3probe,T3 BERT-static L8 through probe B,nsubj,325,849,0.3828032979976443
+T3probe,T3 BERT-static L8 through probe B,det,165,658,0.2507598784194529
+T3probe,T3 BERT-static L8 through probe B,case,105,606,0.17326732673267325
+T3probe,T3 BERT-static L8 through probe B,advmod,215,573,0.37521815008726006
+T3probe,T3 BERT-static L8 through probe B,obj,194,448,0.4330357142857143
+T3probe,T3 BERT-static L8 through probe B,obl,150,398,0.3768844221105528
+T3probe,T3 BERT-static L8 through probe B,amod,128,384,0.3333333333333333
+T3probe,T3 BERT-static L8 through probe B,aux,184,375,0.49066666666666664
+T3probe,T3 BERT-static L8 through probe B,nmod,103,371,0.2776280323450135
+T3probe,T3 BERT-static L8 through probe B,conj,151,295,0.511864406779661
+T3probe,T3 BERT-static L8 through probe B,mark,116,288,0.4027777777777778
+T3probe,T3 BERT-static L8 through probe B,cc,61,277,0.22021660649819494
+T3probe,T3 BERT-static L8 through probe B,compound,111,267,0.4157303370786517
+T3probe,T3 BERT-static L8 through probe B,cop,48,249,0.1927710843373494
+T3probe,T3 BERT-static L8 through probe B,xcomp,79,154,0.512987012987013
+T3probe,T3 BERT-static L8 through probe B,acl,57,134,0.4253731343283582
+T3probe,T3 BERT-static L8 through probe B,advcl,71,129,0.5503875968992248
+T3probe,T3 BERT-static L8 through probe B,ccomp,64,99,0.6464646464646465
+T3probe,T3 BERT-static L8 through probe B,parataxis,28,67,0.417910447761194
+T3probe,T3 BERT-static L8 through probe B,discourse,29,57,0.5087719298245614
+T3probe,T3 BERT-static L8 through probe B,nummod,26,44,0.5909090909090909
+T3probe,T3 BERT-static L8 through probe B,iobj,18,40,0.45
+T3probe,T3 BERT-static L8 through probe B,expl,7,33,0.21212121212121213
+T3probe,T3 BERT-static L8 through probe B,flat,17,29,0.5862068965517241
+T3probe,T3 BERT-static L8 through probe B,fixed,7,28,0.25
+T3probe,T3 BERT-static L8 through probe B,appos,3,9,0.3333333333333333
+T3probe,T3 BERT-static L8 through probe B,csubj,4,7,0.5714285714285714
+T3probe,T3 BERT-static L8 through probe B,vocative,3,6,0.5
+T3probe,T3 BERT-static L8 through probe B,goeswith,0,2,0.0
+T3probe,T3 BERT-static L8 through probe B,list,1,2,0.5
+T3probe,T3 BERT-static L8 through probe B,reparandum,0,1,0.0
+ctx,"contextual L8, cosine (no training)",nsubj,273,849,0.3215547703180212
+ctx,"contextual L8, cosine (no training)",det,455,658,0.6914893617021277
+ctx,"contextual L8, cosine (no training)",case,200,606,0.33003300330033003
+ctx,"contextual L8, cosine (no training)",advmod,234,573,0.4083769633507853
+ctx,"contextual L8, cosine (no training)",obj,173,448,0.3861607142857143
+ctx,"contextual L8, cosine (no training)",obl,29,398,0.0728643216080402
+ctx,"contextual L8, cosine (no training)",amod,198,384,0.515625
+ctx,"contextual L8, cosine (no training)",aux,161,375,0.42933333333333334
+ctx,"contextual L8, cosine (no training)",nmod,72,371,0.1940700808625337
+ctx,"contextual L8, cosine (no training)",conj,127,295,0.43050847457627117
+ctx,"contextual L8, cosine (no training)",mark,145,288,0.5034722222222222
+ctx,"contextual L8, cosine (no training)",cc,62,277,0.22382671480144403
+ctx,"contextual L8, cosine (no training)",compound,179,267,0.6704119850187266
+ctx,"contextual L8, cosine (no training)",cop,108,249,0.43373493975903615
+ctx,"contextual L8, cosine (no training)",xcomp,29,154,0.18831168831168832
+ctx,"contextual L8, cosine (no training)",acl,21,134,0.15671641791044777
+ctx,"contextual L8, cosine (no training)",advcl,13,129,0.10077519379844961
+ctx,"contextual L8, cosine (no training)",ccomp,6,99,0.06060606060606061
+ctx,"contextual L8, cosine (no training)",parataxis,9,67,0.13432835820895522
+ctx,"contextual L8, cosine (no training)",discourse,19,57,0.3333333333333333
+ctx,"contextual L8, cosine (no training)",nummod,20,44,0.45454545454545453
+ctx,"contextual L8, cosine (no training)",iobj,11,40,0.275
+ctx,"contextual L8, cosine (no training)",expl,27,33,0.8181818181818182
+ctx,"contextual L8, cosine (no training)",flat,28,29,0.9655172413793104
+ctx,"contextual L8, cosine (no training)",fixed,24,28,0.8571428571428571
+ctx,"contextual L8, cosine (no training)",appos,4,9,0.4444444444444444
+ctx,"contextual L8, cosine (no training)",csubj,0,7,0.0
+ctx,"contextual L8, cosine (no training)",vocative,1,6,0.16666666666666666
+ctx,"contextual L8, cosine (no training)",goeswith,1,2,0.5
+ctx,"contextual L8, cosine (no training)",list,0,2,0.0
+ctx,"contextual L8, cosine (no training)",reparandum,0,1,0.0
+probe,T2 distance probe L8 k=128,nsubj,721,849,0.8492343934040048
+probe,T2 distance probe L8 k=128,det,605,658,0.9194528875379939
+probe,T2 distance probe L8 k=128,case,467,606,0.7706270627062707
+probe,T2 distance probe L8 k=128,advmod,477,573,0.8324607329842932
+probe,T2 distance probe L8 k=128,obj,420,448,0.9375
+probe,T2 distance probe L8 k=128,obl,295,398,0.7412060301507538
+probe,T2 distance probe L8 k=128,amod,334,384,0.8697916666666666
+probe,T2 distance probe L8 k=128,aux,334,375,0.8906666666666667
+probe,T2 distance probe L8 k=128,nmod,290,371,0.7816711590296496
+probe,T2 distance probe L8 k=128,conj,166,295,0.5627118644067797
+probe,T2 distance probe L8 k=128,mark,244,288,0.8472222222222222
+probe,T2 distance probe L8 k=128,cc,230,277,0.8303249097472925
+probe,T2 distance probe L8 k=128,compound,237,267,0.8876404494382022
+probe,T2 distance probe L8 k=128,cop,196,249,0.7871485943775101
+probe,T2 distance probe L8 k=128,xcomp,150,154,0.974025974025974
+probe,T2 distance probe L8 k=128,acl,106,134,0.7910447761194029
+probe,T2 distance probe L8 k=128,advcl,82,129,0.6356589147286822
+probe,T2 distance probe L8 k=128,ccomp,84,99,0.8484848484848485
+probe,T2 distance probe L8 k=128,parataxis,33,67,0.4925373134328358
+probe,T2 distance probe L8 k=128,discourse,45,57,0.7894736842105263
+probe,T2 distance probe L8 k=128,nummod,42,44,0.9545454545454546
+probe,T2 distance probe L8 k=128,iobj,39,40,0.975
+probe,T2 distance probe L8 k=128,expl,32,33,0.9696969696969697
+probe,T2 distance probe L8 k=128,flat,29,29,1.0
+probe,T2 distance probe L8 k=128,fixed,23,28,0.8214285714285714
+probe,T2 distance probe L8 k=128,appos,6,9,0.6666666666666666
+probe,T2 distance probe L8 k=128,csubj,6,7,0.8571428571428571
+probe,T2 distance probe L8 k=128,vocative,4,6,0.6666666666666666
+probe,T2 distance probe L8 k=128,goeswith,2,2,1.0
+probe,T2 distance probe L8 k=128,list,1,2,0.5
+probe,T2 distance probe L8 k=128,reparandum,1,1,1.0

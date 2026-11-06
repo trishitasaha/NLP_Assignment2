@@ -1,0 +1,496 @@
+{
+  "name": "T1 PPMI+SVD [p0]",
+  "vocab_size": 16654,
+  "dim": 100,
+  "wordsim": {
+    "spearman_covered": 0.13397862405851768,
+    "spearman_full": 0.0889347434801738,
+    "n_covered": 248,
+    "n_total": 353,
+    "oov_policy": "median",
+    "spearman_covered_ci95": [
+      0.004176574179245026,
+      0.24708992598392096
+    ],
+    "by_min_train_freq": {
+      "1": {
+        "n": 248,
+        "spearman": 0.13397862405851768
+      },
+      "5": {
+        "n": 128,
+        "spearman": 0.2308130312161395
+      },
+      "10": {
+        "n": 75,
+        "spearman": 0.26781713186220585
+      },
+      "20": {
+        "n": 32,
+        "spearman": 0.3198900091659029
+      },
+      "50": {
+        "n": 2,
+        "spearman": NaN
+      }
+    }
+  },
+  "analogy": {
+    "acc_covered": 0.0020953378732320588,
+    "acc_full": 0.0006139991813344249,
+    "n_total": 19544,
+    "n_covered": 5727,
+    "n_correct": 12,
+    "by_kind": {
+      "semantic": {
+        "n": 8869,
+        "covered": 776,
+        "correct": 7,
+        "acc_covered": 0.00902061855670103,
+        "acc_full": 0.0007892659826361484
+      },
+      "syntactic": {
+        "n": 10675,
+        "covered": 4951,
+        "correct": 5,
+        "acc_covered": 0.0010098969905069683,
+        "acc_full": 0.000468384074941452
+      }
+    },
+    "per_section": {
+      "capital-common-countries": {
+        "n": 506,
+        "covered": 156,
+        "correct": 0,
+        "acc_covered": 0.0,
+        "acc_full": 0.0
+      },
+      "capital-world": {
+        "n": 4524,
+        "covered": 155,
+        "correct": 0,
+        "acc_covered": 0.0,
+        "acc_full": 0.0
+      },
+      "currency": {
+        "n": 866,
+        "covered": 28,
+        "correct": 0,
+        "acc_covered": 0.0,
+        "acc_full": 0.0
+      },
+      "city-in-state": {
+        "n": 2467,
+        "covered": 227,
+        "correct": 0,
+        "acc_covered": 0.0,
+        "acc_full": 0.0
+      },
+      "family": {
+        "n": 506,
+        "covered": 210,
+        "correct": 7,
+        "acc_covered": 0.03333333333333333,
+        "acc_full": 0.01383399209486166
+      },
+      "gram1-adjective-to-adverb": {
+        "n": 992,
+        "covered": 702,
+        "correct": 0,
+        "acc_covered": 0.0,
+        "acc_full": 0.0
+      },
+      "gram2-opposite": {
+        "n": 812,
+        "covered": 156,
+        "correct": 0,
+        "acc_covered": 0.0,
+        "acc_full": 0.0
+      },
+      "gram3-comparative": {
+        "n": 1332,
+        "covered": 930,
+        "correct": 0,
+        "acc_covered": 0.0,
+        "acc_full": 0.0
+      },
+      "gram4-superlative": {
+        "n": 1122,
+        "covered": 380,
+        "correct": 0,
+        "acc_covered": 0.0,
+        "acc_full": 0.0
+      },
+      "gram5-present-participle": {
+        "n": 1056,
+        "covered": 506,
+        "correct": 0,
+        "acc_covered": 0.0,
+        "acc_full": 0.0
+      },
+      "gram6-nationality-adjective": {
+        "n": 1599,
+        "covered": 409,
+        "correct": 3,
+        "acc_covered": 0.007334963325183374,
+        "acc_full": 0.001876172607879925
+      },
+      "gram7-past-tense": {
+        "n": 1560,
+        "covered": 1056,
+        "correct": 0,
+        "acc_covered": 0.0,
+        "acc_full": 0.0
+      },
+      "gram8-plural": {
+        "n": 1332,
+        "covered": 506,
+        "correct": 2,
+        "acc_covered": 0.003952569169960474,
+        "acc_full": 0.0015015015015015015
+      },
+      "gram9-plural-verbs": {
+        "n": 870,
+        "covered": 306,
+        "correct": 0,
+        "acc_covered": 0.0,
+        "acc_full": 0.0
+      }
+    }
+  },
+  "mst_20": {
+    "name": "T1 PPMI+SVD [p0]",
+    "n_sentences": 20,
+    "n_edges": 234,
+    "uuas": 0.2264957264957265,
+    "uuas_ci95": [
+      0.1776792855238603,
+      0.2841544434857636
+    ],
+    "chain_uuas": 0.43162393162393164,
+    "chain_ci95": [
+      0.4056837600137959,
+      0.46369193024194405
+    ],
+    "random_uuas": 0.15226495726495726,
+    "vs_chain": {
+      "diff": -0.20512820512820512,
+      "ci_low": -0.2530132776001967,
+      "ci_high": -0.1528860374075685,
+      "frac_le_zero": 1.0
+    },
+    "vs_random": {
+      "diff": 0.07423076923076925,
+      "ci_low": 0.03161626275510203,
+      "ci_high": 0.11269794089147285,
+      "frac_le_zero": 0.001
+    },
+    "per_relation": {
+      "nsubj": {
+        "recovered": 6,
+        "total": 27,
+        "recall": 0.2222222222222222
+      },
+      "det": {
+        "recovered": 7,
+        "total": 25,
+        "recall": 0.28
+      },
+      "case": {
+        "recovered": 6,
+        "total": 22,
+        "recall": 0.2727272727272727
+      },
+      "advmod": {
+        "recovered": 5,
+        "total": 18,
+        "recall": 0.2777777777777778
+      },
+      "conj": {
+        "recovered": 1,
+        "total": 15,
+        "recall": 0.06666666666666667
+      },
+      "obl": {
+        "recovered": 4,
+        "total": 14,
+        "recall": 0.2857142857142857
+      },
+      "cc": {
+        "recovered": 1,
+        "total": 14,
+        "recall": 0.07142857142857142
+      },
+      "aux": {
+        "recovered": 5,
+        "total": 13,
+        "recall": 0.38461538461538464
+      },
+      "compound": {
+        "recovered": 3,
+        "total": 12,
+        "recall": 0.25
+      },
+      "nmod": {
+        "recovered": 3,
+        "total": 11,
+        "recall": 0.2727272727272727
+      },
+      "obj": {
+        "recovered": 1,
+        "total": 11,
+        "recall": 0.09090909090909091
+      },
+      "mark": {
+        "recovered": 1,
+        "total": 11,
+        "recall": 0.09090909090909091
+      },
+      "cop": {
+        "recovered": 0,
+        "total": 8,
+        "recall": 0.0
+      },
+      "amod": {
+        "recovered": 3,
+        "total": 7,
+        "recall": 0.42857142857142855
+      },
+      "acl": {
+        "recovered": 2,
+        "total": 6,
+        "recall": 0.3333333333333333
+      },
+      "xcomp": {
+        "recovered": 2,
+        "total": 6,
+        "recall": 0.3333333333333333
+      },
+      "advcl": {
+        "recovered": 0,
+        "total": 5,
+        "recall": 0.0
+      },
+      "iobj": {
+        "recovered": 1,
+        "total": 2,
+        "recall": 0.5
+      },
+      "ccomp": {
+        "recovered": 0,
+        "total": 2,
+        "recall": 0.0
+      },
+      "discourse": {
+        "recovered": 0,
+        "total": 1,
+        "recall": 0.0
+      },
+      "flat": {
+        "recovered": 0,
+        "total": 1,
+        "recall": 0.0
+      },
+      "list": {
+        "recovered": 0,
+        "total": 1,
+        "recall": 0.0
+      },
+      "expl": {
+        "recovered": 1,
+        "total": 1,
+        "recall": 1.0
+      },
+      "fixed": {
+        "recovered": 1,
+        "total": 1,
+        "recall": 1.0
+      }
+    }
+  },
+  "mst_pool": {
+    "name": "T1 PPMI+SVD [p0]",
+    "n_sentences": 660,
+    "n_edges": 6879,
+    "uuas": 0.24480302369530454,
+    "uuas_ci95": [
+      0.23365580958736193,
+      0.25597964922452526
+    ],
+    "chain_uuas": 0.43044047099869165,
+    "chain_ci95": [
+      0.42393093253081365,
+      0.4369310966327985
+    ],
+    "random_uuas": 0.17088821049571157,
+    "vs_chain": {
+      "diff": -0.18563744730338713,
+      "ci_low": -0.1972302584562126,
+      "ci_high": -0.17378272402190773,
+      "frac_le_zero": 1.0
+    },
+    "vs_random": {
+      "diff": 0.07391481319959296,
+      "ci_low": 0.06534288485630614,
+      "ci_high": 0.08303168396464759,
+      "frac_le_zero": 0.0
+    },
+    "per_relation": {
+      "nsubj": {
+        "recovered": 207,
+        "total": 849,
+        "recall": 0.24381625441696114
+      },
+      "det": {
+        "recovered": 108,
+        "total": 658,
+        "recall": 0.1641337386018237
+      },
+      "case": {
+        "recovered": 123,
+        "total": 606,
+        "recall": 0.20297029702970298
+      },
+      "advmod": {
+        "recovered": 180,
+        "total": 573,
+        "recall": 0.31413612565445026
+      },
+      "obj": {
+        "recovered": 123,
+        "total": 448,
+        "recall": 0.27455357142857145
+      },
+      "obl": {
+        "recovered": 86,
+        "total": 398,
+        "recall": 0.21608040201005024
+      },
+      "amod": {
+        "recovered": 149,
+        "total": 384,
+        "recall": 0.3880208333333333
+      },
+      "aux": {
+        "recovered": 94,
+        "total": 375,
+        "recall": 0.25066666666666665
+      },
+      "nmod": {
+        "recovered": 92,
+        "total": 371,
+        "recall": 0.24797843665768193
+      },
+      "conj": {
+        "recovered": 78,
+        "total": 295,
+        "recall": 0.26440677966101694
+      },
+      "mark": {
+        "recovered": 47,
+        "total": 288,
+        "recall": 0.16319444444444445
+      },
+      "cc": {
+        "recovered": 26,
+        "total": 277,
+        "recall": 0.09386281588447654
+      },
+      "compound": {
+        "recovered": 89,
+        "total": 267,
+        "recall": 0.3333333333333333
+      },
+      "cop": {
+        "recovered": 35,
+        "total": 249,
+        "recall": 0.14056224899598393
+      },
+      "xcomp": {
+        "recovered": 39,
+        "total": 154,
+        "recall": 0.2532467532467532
+      },
+      "acl": {
+        "recovered": 32,
+        "total": 134,
+        "recall": 0.23880597014925373
+      },
+      "advcl": {
+        "recovered": 27,
+        "total": 129,
+        "recall": 0.20930232558139536
+      },
+      "ccomp": {
+        "recovered": 25,
+        "total": 99,
+        "recall": 0.25252525252525254
+      },
+      "parataxis": {
+        "recovered": 13,
+        "total": 67,
+        "recall": 0.19402985074626866
+      },
+      "discourse": {
+        "recovered": 17,
+        "total": 57,
+        "recall": 0.2982456140350877
+      },
+      "nummod": {
+        "recovered": 20,
+        "total": 44,
+        "recall": 0.45454545454545453
+      },
+      "iobj": {
+        "recovered": 16,
+        "total": 40,
+        "recall": 0.4
+      },
+      "expl": {
+        "recovered": 13,
+        "total": 33,
+        "recall": 0.3939393939393939
+      },
+      "flat": {
+        "recovered": 18,
+        "total": 29,
+        "recall": 0.6206896551724138
+      },
+      "fixed": {
+        "recovered": 19,
+        "total": 28,
+        "recall": 0.6785714285714286
+      },
+      "appos": {
+        "recovered": 5,
+        "total": 9,
+        "recall": 0.5555555555555556
+      },
+      "csubj": {
+        "recovered": 1,
+        "total": 7,
+        "recall": 0.14285714285714285
+      },
+      "vocative": {
+        "recovered": 1,
+        "total": 6,
+        "recall": 0.16666666666666666
+      },
+      "goeswith": {
+        "recovered": 0,
+        "total": 2,
+        "recall": 0.0
+      },
+      "list": {
+        "recovered": 1,
+        "total": 2,
+        "recall": 0.5
+      },
+      "reparandum": {
+        "recovered": 0,
+        "total": 1,
+        "recall": 0.0
+      }
+    }
+  }
+}

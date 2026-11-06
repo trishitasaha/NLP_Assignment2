@@ -1,0 +1,16 @@
+\begin{tabular}{llccc}
+\toprule
+representation for the MST & tier & 20 sentences [95\% CI] & pool (660) [95\% CI] & edge AUC \\
+\midrule
+random tree (expected) & -- & 15.2 & -- & -- \\
+linear chain & -- & 43.2 [40.6, 46.4] & 43.0 [42.4, 43.7] & 0.75 \\
+T1 PPMI-SVD (spec) & req. & 20.5 [16.3, 26.2] & 24.8 [23.7, 26.0] & 0.54 \\
+T1 PPMI-SVD (p0) & B & 22.6 [17.8, 28.4] & 24.5 [23.4, 25.6] & -- \\
+T3 BERT-static L8 & req. & 18.4 [13.6, 26.0] & 17.9 [16.8, 18.9] & 0.46 \\
+T3 BERT-static L8 + ABTT & B & 19.7 [14.9, 26.2] & 19.6 [18.6, 20.7] & 0.44 \\
+concat [T1 ; T3] (L2-normalised) & C & 19.2 [15.2, 25.1] & 25.1 [24.0, 26.2] & -- \\
+T3 BERT-static L8 through probe B & C & 29.5 [23.7, 38.2] & 35.9 [34.3, 37.5] & -- \\
+contextual L8, cosine (no training) & B & 35.9 [32.1, 39.6] & 38.2 [37.3, 39.2] & 0.70 \\
+T2 distance probe L8 k=128 & ref. & 81.2 [75.9, 85.9] & 82.9 [81.9, 83.9] & 0.96 \\
+\bottomrule
+\end{tabular}

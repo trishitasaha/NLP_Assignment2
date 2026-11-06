@@ -1,0 +1,72 @@
+Device: cuda
+{'train': 12544, 'dev': 2001, 'test': 2077} sentences
+Using cached BERT features in results/task2/features
+[skip] distance k=32 layers [1, 2, 3, 4] already done
+[skip] depth k=32 layers [1, 2, 3, 4] already done
+[skip] distance k=64 layers [1, 2, 3, 4] already done
+[skip] depth k=64 layers [1, 2, 3, 4] already done
+[skip] distance k=128 layers [1, 2, 3, 4] already done
+[skip] depth k=128 layers [1, 2, 3, 4] already done
+[skip] distance k=32 layers [5, 6, 7, 8] already done
+[skip] depth k=32 layers [5, 6, 7, 8] already done
+[skip] distance k=64 layers [5, 6, 7, 8] already done
+[skip] depth k=64 layers [5, 6, 7, 8] already done
+[skip] distance k=128 layers [5, 6, 7, 8] already done
+[skip] depth k=128 layers [5, 6, 7, 8] already done
+[skip] distance k=32 layers [9, 10, 11, 12] already done
+[skip] depth k=32 layers [9, 10, 11, 12] already done
+[skip] distance k=64 layers [9, 10, 11, 12] already done
+[skip] depth k=64 layers [9, 10, 11, 12] already done
+[skip] distance k=128 layers [9, 10, 11, 12] already done
+[skip] depth k=128 layers [9, 10, 11, 12] already done
+
+Test UUAS (all words) - distance probe
+layer | k=32   | k=64   | k=128 
+    1 | 0.5307 | 0.5163 | 0.4928
+    2 | 0.5496 | 0.5395 | 0.5144
+    3 | 0.5874 | 0.5806 | 0.5532
+    4 | 0.6273 | 0.6245 | 0.5817
+    5 | 0.6311 | 0.6337 | 0.6272
+    6 | 0.6354 | 0.6406 | 0.6304
+    7 | 0.6513 | 0.6400 | 0.6400
+    8 | 0.6637 | 0.6516 | 0.6445
+    9 | 0.6375 | 0.6102 | 0.6191
+   10 | 0.5994 | 0.5820 | 0.5702
+   11 | 0.5794 | 0.5531 | 0.5492
+   12 | 0.5834 | 0.5737 | 0.5423
+
+Test UUAS (punctuation excluded) - distance probe
+layer | k=32   | k=64   | k=128 
+    1 | 0.5608 | 0.5443 | 0.5196
+    2 | 0.5779 | 0.5660 | 0.5487
+    3 | 0.6172 | 0.6049 | 0.5816
+    4 | 0.6547 | 0.6513 | 0.6216
+    5 | 0.6555 | 0.6560 | 0.6534
+    6 | 0.6673 | 0.6675 | 0.6590
+    7 | 0.6783 | 0.6660 | 0.6637
+    8 | 0.6888 | 0.6771 | 0.6683
+    9 | 0.6631 | 0.6395 | 0.6467
+   10 | 0.6288 | 0.6077 | 0.6002
+   11 | 0.6070 | 0.5856 | 0.5794
+   12 | 0.6185 | 0.6061 | 0.5794
+
+Test depth-probe Spearman (sentences of length 5-50)
+layer | k=32   | k=64   | k=128 
+    1 | 0.6952 | 0.6861 | 0.6660
+    2 | 0.7134 | 0.6952 | 0.6469
+    3 | 0.7359 | 0.7178 | 0.6847
+    4 | 0.7636 | 0.7557 | 0.7118
+    5 | 0.7900 | 0.7634 | 0.7093
+    6 | 0.7851 | 0.7590 | 0.7180
+    7 | 0.7945 | 0.7880 | 0.7535
+    8 | 0.8019 | 0.7820 | 0.7570
+    9 | 0.7946 | 0.7891 | 0.7486
+   10 | 0.7805 | 0.7476 | 0.7146
+   11 | 0.7658 | 0.7274 | 0.7116
+   12 | 0.7760 | 0.7635 | 0.7523
+
+BEST LAYER l* = 8 (rank k=32, dev UUAS 0.6723, test UUAS 0.6637)
+  best layer by test UUAS: 8 | best layer by test depth Spearman: 8
+  saved results/task2/best_layer.json
+saved results/task2/fig_uuas_vs_layer.png
+saved results/task2/fig_depth_spearman_vs_layer.png

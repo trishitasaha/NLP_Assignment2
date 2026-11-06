@@ -1,0 +1,19 @@
+{
+  "kind": "distance",
+  "k": 128,
+  "layer": 11,
+  "epochs": 30,
+  "best_epoch": 1,
+  "best_dev_loss": 0.5868310928344727,
+  "final_train_loss": 0.6984991431236267,
+  "dev": {
+    "uuas_all": 0.5478031710372835,
+    "uuas_nopunct": 0.5772179627601315,
+    "dist_spearman": 0.7253495074623779
+  },
+  "test": {
+    "uuas_all": 0.5491593170265456,
+    "uuas_nopunct": 0.5793905372894947,
+    "dist_spearman": 0.7213791082179059
+  }
+}

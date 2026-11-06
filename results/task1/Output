@@ -1,0 +1,28 @@
+Sentences  train=12544  dev=2001  test=2077
+Example: ['Al', '-', 'Zaman', ':', 'American', 'forces', 'killed', 'Shaikh', 'Abdullah', 'al', '-', 'Ani'] [0, 3, 1, 7, 6, 7, 1, 7, 8, 8, 12, 8]
+Train tokens=204578  word types=16654  vocab (count>=2)=8865
+Co-occurrence matrix (8865, 8865), non-zeros=582259, total count=1569616
+PPMI matrix non-zeros=519780
+Word vectors: (8865, 100)   (3s so far)
+  nearest to 'good': ['food', 'great', 'nice', 'really', 'pretty']
+  nearest to 'people': ['displaced', 'killing', 'retarded', 'innocent', 'who']
+  nearest to 'monday': ['july', 'tuesday', '6', 'june', 'friday']
+  nearest to 'computer': ['disc', 'seized', 'evidence', 'plans', 'mohammed']
+  nearest to 'said': ['spokesman', 'maviglio', 'gregg', 'fishman', 'penman']
+
+WordSim-353: 203/353 pairs have both words in vocab
+  Spearman (covered pairs only) = 0.1887
+  Spearman (all 353, OOV pairs -> sim 0) = 0.0242
+
+Google analogies: 3406/19544 questions fully in vocab
+  Accuracy (covered questions) = 0.0085
+  Accuracy (all questions, OOV = wrong) = 0.0015
+  semantic = 0.0198   syntactic = 0.0070
+
+MST structural check on 20 test sentences (indices [52, 62, 66, 182, 195, 213, 239, 319, 561, 572, 652, 770, 1222, 1520, 1646, 1777, 1880, 2044, 2053, 2055])
+  Undirected attachment agreement (micro) = 0.1667
+  Undirected attachment agreement (macro) = 0.2075
+  Words without a vector: 7.4% on average
+  Reference: random tree = 0.1308, linear chain = 0.3546
+
+Saved results/task1_results.json and results/task1_vectors.npz  (4s total)

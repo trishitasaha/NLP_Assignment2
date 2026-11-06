@@ -1,0 +1,15 @@
+# BERT-related and other large files
+results/*/features/
+results/task3/bert_static_layer*.npz
+*.npy
+*.pt
+*.bin
+*.safetensors
+bert-base-uncased/
+
+# downloaded data (the scripts re-download it automatically)
+data/
+
+# python
+__pycache__/
+*.pyc

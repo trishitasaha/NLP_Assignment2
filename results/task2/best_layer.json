@@ -1,0 +1,10 @@
+{
+  "best_layer": 8,
+  "best_k": 32,
+  "selected_by": "highest DEV UUAS over layers and ranks",
+  "dev_uuas": 0.6723117466626345,
+  "test_uuas": 0.6637268106182387,
+  "best_layer_by_test_uuas": 8,
+  "best_k_by_test_uuas": 32,
+  "best_layer_by_test_depth_spearman": 8
+}

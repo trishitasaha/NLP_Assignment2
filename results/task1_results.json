@@ -1,0 +1,60 @@
+{
+  "settings": {
+    "min_count": 2,
+    "window": 5,
+    "dim": 100,
+    "svd_power": 1.0,
+    "source": "auto",
+    "wordsim": null,
+    "analogy": null,
+    "n_sample": 20
+  },
+  "vocab_size": 8865,
+  "wordsim": {
+    "n_pairs": 353,
+    "n_covered": 203,
+    "spearman_covered": 0.18868599179233253,
+    "spearman_all353": 0.024172027568184516
+  },
+  "analogy": {
+    "n_questions": 19544,
+    "n_covered": 3406,
+    "acc_covered": 0.008514386376981797,
+    "acc_all": 0.0014838313548915269,
+    "acc_semantic_covered": 0.019753086419753086,
+    "acc_syntactic_covered": 0.006997667444185272
+  },
+  "mst": {
+    "n_sentences": 20,
+    "n_gold_edges": 282,
+    "agreement_micro": 0.16666666666666666,
+    "agreement_macro": 0.20754540506208272,
+    "avg_fraction_words_without_vector": 0.07382358246328834
+  },
+  "baselines": {
+    "linear_chain": 0.3546099290780142,
+    "random_tree": 0.1307801418439716
+  },
+  "sample_indices": [
+    52,
+    62,
+    66,
+    182,
+    195,
+    213,
+    239,
+    319,
+    561,
+    572,
+    652,
+    770,
+    1222,
+    1520,
+    1646,
+    1777,
+    1880,
+    2044,
+    2053,
+    2055
+  ]
+}

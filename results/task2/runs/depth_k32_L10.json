@@ -1,0 +1,17 @@
+{
+  "kind": "depth",
+  "k": 32,
+  "layer": 10,
+  "epochs": 30,
+  "best_epoch": 26,
+  "best_dev_loss": 0.49821481108665466,
+  "final_train_loss": 0.5417294502258301,
+  "dev": {
+    "depth_spearman": 0.7741733042767618,
+    "root_acc": 0.6551724137931034
+  },
+  "test": {
+    "depth_spearman": 0.7804754948856923,
+    "root_acc": 0.6687530091478093
+  }
+}

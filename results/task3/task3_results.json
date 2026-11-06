@@ -1,0 +1,186 @@
+{
+  "layer": 8,
+  "sample_indices": [
+    52,
+    62,
+    66,
+    182,
+    195,
+    213,
+    239,
+    319,
+    561,
+    572,
+    652,
+    770,
+    1222,
+    1520,
+    1646,
+    1777,
+    1880,
+    2044,
+    2053,
+    2055
+  ],
+  "results": {
+    "Task 1: PPMI+SVD (100d)": {
+      "wordsim": {
+        "n_pairs": 353,
+        "n_covered": 203,
+        "spearman_covered": 0.18868599179233253,
+        "spearman_all353": 0.024172027568184516
+      },
+      "analogy": {
+        "n_questions": 19544,
+        "n_covered": 3406,
+        "acc_covered": 0.008514386376981797,
+        "acc_all": 0.0014838313548915269,
+        "acc_semantic_covered": 0.019753086419753086,
+        "acc_syntactic_covered": 0.006997667444185272
+      },
+      "mst20": {
+        "n_sentences": 20,
+        "n_gold_edges": 282,
+        "agreement_micro": 0.16666666666666666,
+        "agreement_macro": 0.20754540506208272,
+        "avg_fraction_words_without_vector": 0.07382358246328834
+      },
+      "mst_fulltest": {
+        "n_sentences": 1926,
+        "n_gold_edges": 23017,
+        "agreement_micro": 0.17752096276665075,
+        "agreement_macro": 0.3156899894981138,
+        "avg_fraction_words_without_vector": 0.11543103985738126
+      }
+    },
+    "BERT l*, same vocab (MAIN)": {
+      "wordsim": {
+        "n_pairs": 353,
+        "n_covered": 203,
+        "spearman_covered": 0.6480389166921929,
+        "spearman_all353": 0.1727719843031405
+      },
+      "analogy": {
+        "n_questions": 19544,
+        "n_covered": 3406,
+        "acc_covered": 0.7712859659424545,
+        "acc_all": 0.13441465411379452,
+        "acc_semantic_covered": 0.8765432098765432,
+        "acc_syntactic_covered": 0.757080973008997
+      },
+      "mst20": {
+        "n_sentences": 20,
+        "n_gold_edges": 282,
+        "agreement_micro": 0.09574468085106383,
+        "agreement_macro": 0.13411953249049685,
+        "avg_fraction_words_without_vector": 0.07382358246328834
+      },
+      "mst_fulltest": {
+        "n_sentences": 1926,
+        "n_gold_edges": 23017,
+        "agreement_micro": 0.14454533605595865,
+        "agreement_macro": 0.2854140392011491,
+        "avg_fraction_words_without_vector": 0.11543103985738126
+      }
+    },
+    "BERT l*, all word types": {
+      "wordsim": {
+        "n_pairs": 353,
+        "n_covered": 248,
+        "spearman_covered": 0.5774035099734891,
+        "spearman_all353": 0.2878065226974603
+      },
+      "analogy": {
+        "n_questions": 19544,
+        "n_covered": 5727,
+        "acc_covered": 0.676619521564519,
+        "acc_all": 0.1982705689725747,
+        "acc_semantic_covered": 0.7448453608247423,
+        "acc_syntactic_covered": 0.6659260755402949
+      },
+      "mst20": {
+        "n_sentences": 20,
+        "n_gold_edges": 282,
+        "agreement_micro": 0.09929078014184398,
+        "agreement_macro": 0.1353390446856188,
+        "avg_fraction_words_without_vector": 0.06763310627281215
+      },
+      "mst_fulltest": {
+        "n_sentences": 1926,
+        "n_gold_edges": 23017,
+        "agreement_micro": 0.14723899726289263,
+        "agreement_macro": 0.28855664707154804,
+        "avg_fraction_words_without_vector": 0.08911027427738134
+      }
+    },
+    "BERT l*, centered (extra)": {
+      "wordsim": {
+        "n_pairs": 353,
+        "n_covered": 203,
+        "spearman_covered": 0.7060614398630237,
+        "spearman_all353": 0.3182108711092139
+      },
+      "analogy": {
+        "n_questions": 19544,
+        "n_covered": 3406,
+        "acc_covered": 0.7833235466823253,
+        "acc_all": 0.13651248465002047,
+        "acc_semantic_covered": 0.8888888888888888,
+        "acc_syntactic_covered": 0.769076974341886
+      },
+      "mst20": {
+        "n_sentences": 20,
+        "n_gold_edges": 282,
+        "agreement_micro": 0.1347517730496454,
+        "agreement_macro": 0.18735143917759584,
+        "avg_fraction_words_without_vector": 0.07382358246328834
+      },
+      "mst_fulltest": {
+        "n_sentences": 1926,
+        "n_gold_edges": 23017,
+        "agreement_micro": 0.16040318025807013,
+        "agreement_macro": 0.30175814647381033,
+        "avg_fraction_words_without_vector": 0.11543103985738126
+      }
+    },
+    "BERT l*, centered+PCA100 (extra)": {
+      "wordsim": {
+        "n_pairs": 353,
+        "n_covered": 203,
+        "spearman_covered": 0.6782003286726292,
+        "spearman_all353": 0.2962016360306564
+      },
+      "analogy": {
+        "n_questions": 19544,
+        "n_covered": 3406,
+        "acc_covered": 0.8141514973576043,
+        "acc_all": 0.14188497748669668,
+        "acc_semantic_covered": 0.8222222222222222,
+        "acc_syntactic_covered": 0.8130623125624792
+      },
+      "mst20": {
+        "n_sentences": 20,
+        "n_gold_edges": 282,
+        "agreement_micro": 0.1347517730496454,
+        "agreement_macro": 0.18028982368347407,
+        "avg_fraction_words_without_vector": 0.07382358246328834
+      },
+      "mst_fulltest": {
+        "n_sentences": 1926,
+        "n_gold_edges": 23017,
+        "agreement_micro": 0.15479862710170744,
+        "agreement_macro": 0.2961125039596879,
+        "avg_fraction_words_without_vector": 0.11543103985738126
+      }
+    }
+  },
+  "baselines_20": {
+    "linear_chain": 0.3546099290780142,
+    "random_tree": 0.1307801418439716
+  },
+  "baselines_fulltest": {
+    "linear_chain": 0.4053960116435678,
+    "random_tree": 0.1427292870487033
+  },
+  "sweep": []
+}

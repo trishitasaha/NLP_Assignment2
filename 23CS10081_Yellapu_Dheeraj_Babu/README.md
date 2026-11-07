@@ -39,7 +39,7 @@ code/
   task3/                 pool_static.py, t3_common.py, evaluate_task3.py, extensions_task3.py,
                          diagnostics_task3.py, plot_task3.py
   run_all.py             runs everything (or selected tasks) in order
-  run_all_colab.ipynb    Google Colab notebook: end-to-end run
+  run_all_colab.ipynb    self-contained Colab notebook (all code embedded; regenerate with make_notebook.py)
 README.md  requirements.txt  report.pdf  presentation.pdf (individual slides)
 ```
 
@@ -89,7 +89,7 @@ python code/run_all.py --with-control     # also the spec-literal Task 2 control
 python code/run_all.py --dry-run          # just print the commands
 ```
 
-**Colab:** open `code/run_all_colab.ipynb` and choose *Runtime → GPU*. Upload this archive when asked, then *Run all*.
+**Colab (no upload needed):** open `code/run_all_colab.ipynb`, choose *Runtime → Change runtime type → GPU*, then *Runtime → Run all*. The notebook embeds the complete source code, writes it to a fresh folder, installs the pinned packages and downloads the public data itself. Set `MODE` in its first cell: `"full"` (default) trains all 78 probes exactly as in the report; `"fast"` trains rank 64 only; `"pretrained"` downloads our trained probes from the project repository and only evaluates.
 
 ### Each task on its own
 
